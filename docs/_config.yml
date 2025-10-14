@@ -1,0 +1,7 @@
+title: TapTime Documentation
+description: Developer and user documentation for the TapTime project.
+theme: jekyll-theme-primer
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
