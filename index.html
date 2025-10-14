@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TapTime | Bestellen zonder wachtrij voor festivals</title>
+  <meta name="description" content="TapTime is het slimme webplatform waarmee festivalbezoekers hun drankjes bestellen, betalen en ophalen zonder wachtrij. Ontdek de voordelen voor bezoekers en organisatoren." />
+  <meta property="og:title" content="TapTime | Bestellen zonder wachtrij" />
+  <meta property="og:description" content="TapTime laat bezoekers vooraf bestellen en betalen, terwijl organisatoren realtime inzicht krijgen in verkoop en drukte." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://taptime.example.com" />
+  <meta property="og:image" content="https://taptime.example.com/assets/hero-illustration.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B6CFF'/><text x='16' y='21' font-size='14' text-anchor='middle' fill='white' font-family='Inter, sans-serif'>T</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" data-header>
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" aria-label="Ga naar begin van de pagina">TapTime</a>
+      <button class="header__toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toon menu" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="header__nav" id="primary-navigation" aria-label="Hoofdmenu">
+        <ul class="header__list">
+          <li><a href="#product" class="header__link">Product</a></li>
+          <li><a href="#bezoekers" class="header__link">Voor bezoekers</a></li>
+          <li><a href="#organisatoren" class="header__link">Voor organisatoren</a></li>
+          <li><a href="#werking" class="header__link">Werking</a></li>
+          <li><a href="#faq" class="header__link">FAQ</a></li>
+          <li><a href="#contact" class="header__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="hero__eyebrow">Conceptwebsite</span>
+          <h1 class="hero__title">Bestel. Betaal. Haal op. Zónder wachtrij.</h1>
+          <p class="hero__subtitle">TapTime is het webplatform voor festivals en evenementen waar bezoekers drankjes vooraf bestellen, veilig betalen en razendsnel ophalen bij de bar die het beste uitkomt.</p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary" data-demo-button>Demo aanvragen</a>
+            <a href="#" class="btn btn--ghost" role="button">Download infosheet (PDF)</a>
+          </div>
+          <ul class="hero__stats" aria-label="Voorbeeld wachttijden">
+            <li class="hero__stat">
+              <span class="status-dot status-dot--calm" aria-hidden="true"></span>
+              <span class="hero__stat-text">Main Stage Bar · Rustig</span>
+            </li>
+            <li class="hero__stat">
+              <span class="status-dot status-dot--busy" aria-hidden="true"></span>
+              <span class="hero__stat-text">Craft Beer Corner · Druk</span>
+            </li>
+            <li class="hero__stat">
+              <span class="status-dot status-dot--steady" aria-hidden="true"></span>
+              <span class="hero__stat-text">Cocktail Lab · Doorstroming goed</span>
+            </li>
+          </ul>
+        </div>
+        <div class="hero__visual">
+          <img src="assets/hero-illustration.svg" alt="Illustratie van het TapTime besteloverzicht" class="hero__image" />
+        </div>
+      </div>
+      <p class="hero__note">TapTime is momenteel een concept. Deze website informeert over de mogelijkheden; live bestelfunctionaliteit volgt later.</p>
+    </section>
+
+    <section class="section" id="product">
+      <div class="container">
+        <div class="section__intro">
+          <span class="section__eyebrow">Waarom TapTime?</span>
+          <h2 class="section__title">Verkort de rij, verhoog de beleving</h2>
+          <p class="section__subtitle">Een digitale bestelstraat die aansluit bij hoe bezoekers zich bewegen over het terrein en hoe bars werken.</p>
+        </div>
+        <div class="grid grid--benefits" role="list">
+          <article class="card card--benefit" role="listitem">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
+                <path d="M12 20h8m0 0l-3-3m3 3l-3 3M21 14h7a2 2 0 012 2v12" stroke="#5B6CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="card__title">Nooit meer lang wachten</h3>
+            <p class="card__text">Bezoekers bestellen onderweg en pikken hun drankjes op zodra ze arriveren.</p>
+          </article>
+          <article class="card card--benefit" role="listitem">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
+                <path d="M20 26c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" stroke="#5B6CFF" stroke-width="2" />
+                <path d="M20 12V9m0 22v-3m8-9h3M9 20h3" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="card__title">Betaal veilig</h3>
+            <p class="card__text">Ondersteunt iDEAL, Apple Pay en creditcard. Geen losse munten of bonnen meer.</p>
+          </article>
+          <article class="card card--benefit" role="listitem">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
+                <path d="M12 15l8-4 8 4-8 4-8-4z" stroke="#5B6CFF" stroke-width="2" stroke-linejoin="round" />
+                <path d="M12 21l8 4 8-4" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="card__title">Kies je bar</h3>
+            <p class="card__text">Laat bezoekers zelf bepalen waar ze ophalen, inclusief realtime druktemeter.</p>
+          </article>
+          <article class="card card--benefit" role="listitem">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
+                <path d="M12 24l6 4 10-12" stroke="#5B6CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 16h16" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="card__title">Minder rijen</h3>
+            <p class="card__text">Stuur de drukte en spreid pieken door bezoekers vooraf te laten plannen.</p>
+          </article>
+          <article class="card card--benefit" role="listitem">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
+                <path d="M13 25h14M13 20h14M13 15h14" stroke="#5B6CFF" stroke-width="2" stroke-linecap="round" />
+                <path d="M23 10l5 5-5 5" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="card__title">Meer omzet</h3>
+            <p class="card__text">Voorkom afhakers: bezoekers bestellen terwijl ze nog zin hebben in een drankje.</p>
+          </article>
+          <article class="card card--benefit" role="listitem">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
+                <path d="M20 12v16M12 20h16" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" />
+                <circle cx="20" cy="20" r="6" stroke="#5B6CFF" stroke-width="2" />
+              </svg>
+            </div>
+            <h3 class="card__title">Realtime dashboard</h3>
+            <p class="card__text">Zie verkoopcijfers en drukte per bar in één overzicht om direct bij te sturen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--split" id="bezoekers">
+      <div class="container split">
+        <div class="split__column">
+          <h2 class="section__title">Voor bezoekers</h2>
+          <ol class="steps">
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">1</span>
+              <div>
+                <h3 class="steps__title">Scan of open de webapp</h3>
+                <p class="steps__text">Geen download nodig. TapTime werkt in elke mobiele browser.</p>
+              </div>
+            </li>
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">2</span>
+              <div>
+                <h3 class="steps__title">Kies je bar en drankje</h3>
+                <p class="steps__text">Bekijk menu’s per bar en zie direct de actuele wachttijd.</p>
+              </div>
+            </li>
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">3</span>
+              <div>
+                <h3 class="steps__title">Betaal in één keer</h3>
+                <p class="steps__text">Reken af met iDEAL, Apple Pay of creditcard. Ontvang direct je afhaalcode.</p>
+              </div>
+            </li>
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">4</span>
+              <div>
+                <h3 class="steps__title">Haal relaxed op</h3>
+                <p class="steps__text">Je krijgt een pushmelding zodra de bar je bestelling klaarzet.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="split__column" id="organisatoren">
+          <h2 class="section__title">Voor organisatoren</h2>
+          <ol class="steps steps--accent">
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">1</span>
+              <div>
+                <h3 class="steps__title">Configureer menu’s en bars</h3>
+                <p class="steps__text">Zet producten, prijzen en openingstijden klaar per bar of per crew.</p>
+              </div>
+            </li>
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">2</span>
+              <div>
+                <h3 class="steps__title">Ontvang digitale bestellingen</h3>
+                <p class="steps__text">Personeel ziet betaalde orders binnenkomen op de TapTime keukenschermen.</p>
+              </div>
+            </li>
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">3</span>
+              <div>
+                <h3 class="steps__title">Markeer ‘klaar’</h3>
+                <p class="steps__text">Met één tik krijgen bezoekers een melding dat ze kunnen ophalen.</p>
+              </div>
+            </li>
+            <li class="steps__item">
+              <span class="steps__icon" aria-hidden="true">4</span>
+              <div>
+                <h3 class="steps__title">Bekijk realtime data</h3>
+                <p class="steps__text">Volg omzet, wachttijden en pieken live en stuur extra crew waar nodig.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--timeline" id="werking">
+      <div class="container">
+        <div class="section__intro">
+          <span class="section__eyebrow">Hoe het werkt</span>
+          <h2 class="section__title">Binnen vier stappen aan de beurt</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__icon" aria-hidden="true">1</div>
+            <h3 class="timeline__title">Open TapTime</h3>
+            <p class="timeline__text">Bezoekers scannen een QR-code of openen de link van het evenement. Geen account nodig.</p>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__icon" aria-hidden="true">2</div>
+            <h3 class="timeline__title">Bekijk menu en wachttijd</h3>
+            <p class="timeline__text">Elke bar toont producten, voorraad en een drukte-indicator zodat bezoekers slim kiezen.</p>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__icon" aria-hidden="true">3</div>
+            <h3 class="timeline__title">Betaal online</h3>
+            <p class="timeline__text">Met een paar taps is de bestelling betaald. TapTime genereert automatisch een afhaalcode.</p>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__icon" aria-hidden="true">4</div>
+            <h3 class="timeline__title">Haal je bestelling op</h3>
+            <p class="timeline__text">Zodra de bar klaar is, gaat er een notificatie uit en staat het drankje klaar bij de pick-up counter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--logos" aria-labelledby="partners-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="partners-heading">Partnerfestivals</h2>
+        <div class="logos" role="list">
+          <figure class="logos__item" role="listitem">
+            <img src="assets/logo-placeholder.svg" alt="Partner Festival 1" />
+          </figure>
+          <figure class="logos__item" role="listitem">
+            <img src="assets/logo-placeholder.svg" alt="Partner Festival 2" />
+          </figure>
+          <figure class="logos__item" role="listitem">
+            <img src="assets/logo-placeholder.svg" alt="Partner Festival 3" />
+          </figure>
+          <figure class="logos__item" role="listitem">
+            <img src="assets/logo-placeholder.svg" alt="Partner Festival 4" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--faq" id="faq">
+      <div class="container">
+        <div class="section__intro">
+          <span class="section__eyebrow">FAQ</span>
+          <h2 class="section__title">Veelgestelde vragen</h2>
+        </div>
+        <div class="accordion" data-accordion>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Hoe betalen bezoekers in TapTime?</button>
+            <div class="accordion__panel" hidden>
+              <p>Betalen kan via iDEAL, Apple Pay of creditcard. Alle betalingen verlopen via een gecertificeerde PSP en worden direct bevestigd aan de bar.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Wat gebeurt er met persoonsgegevens?</button>
+            <div class="accordion__panel" hidden>
+              <p>TapTime verzamelt alleen gegevens die nodig zijn voor de bestelling. We bewaren deze volgens AVG-richtlijnen en delen niets met derden zonder toestemming.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Hoe werkt terugbetaling bij annulering?</button>
+            <div class="accordion__panel" hidden>
+              <p>Organisatoren kunnen bestellingen in het dashboard terugbetalen. Het bedrag staat binnen enkele werkdagen weer op de rekening van de bezoeker.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Werkt TapTime zonder stabiel internet?</button>
+            <div class="accordion__panel" hidden>
+              <p>TapTime cachet menu’s lokaal en synchroniseert zodra er verbinding is. Voor realtime updates adviseren we een betrouwbare wifi- of 4G-verbinding bij de bars.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Welke kosten zijn eraan verbonden?</button>
+            <div class="accordion__panel" hidden>
+              <p>We rekenen een platformfee per transactie plus de kosten van de betalingsprovider. Voor grote evenementen bieden we staffelkorting.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Kan TapTime koppelen met bestaande systemen?</button>
+            <div class="accordion__panel" hidden>
+              <p>Ja, via onze API en webhooks koppelen we met POS-systemen, voorraadbeheer en toegangscontrole. Neem contact op voor de technische specificaties.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cta" id="contact">
+      <div class="container cta">
+        <div class="cta__content">
+          <h2 class="cta__title">Klaar voor kortere rijen en blije bezoekers?</h2>
+          <p class="cta__text">Plan een demo en ontdek hoe TapTime jouw volgende festival helpt stroomlijnen.</p>
+        </div>
+        <a href="#" class="btn btn--primary">Plan een demo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo">TapTime</a>
+        <p class="footer__text">Slim bestellen voor festivals en evenementen. Minder wachten, meer genieten.</p>
+        <ul class="footer__contact">
+          <li><a href="tel:+31000000000">+31 (0)20 000 00 00</a></li>
+          <li><a href="mailto:info@taptime.nl">info@taptime.nl</a></li>
+          <li>Industrieweg 1, 1011 AB Amsterdam</li>
+        </ul>
+      </div>
+      <div class="footer__links">
+        <div>
+          <h3 class="footer__heading">Product</h3>
+          <ul>
+            <li><a href="#product">Overzicht</a></li>
+            <li><a href="#werking">Hoe het werkt</a></li>
+            <li><a href="#faq">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">Organisatoren</h3>
+          <ul>
+            <li><a href="#organisatoren">Voordelen</a></li>
+            <li><a href="#contact">Demo aanvragen</a></li>
+            <li><a href="#">API-documentatie</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">Resources</h3>
+          <ul>
+            <li><a href="#">Download infosheet</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Statuspagina</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">Bedrijf</h3>
+          <ul>
+            <li><a href="#">Over TapTime</a></li>
+            <li><a href="#">Privacyverklaring</a></li>
+            <li><a href="#">Algemene voorwaarden</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="footer__meta">© <span data-year></span> TapTime. Alle rechten voorbehouden.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

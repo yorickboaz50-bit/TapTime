@@ -1,0 +1,12 @@
+<svg width="600" height="480" viewBox="0 0 600 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="520" height="360" rx="32" fill="#EEF1FF"/>
+  <rect x="100" y="90" width="400" height="60" rx="16" fill="#5B6CFF" opacity="0.2"/>
+  <rect x="100" y="180" width="320" height="48" rx="14" fill="#00C2A8" opacity="0.2"/>
+  <rect x="100" y="260" width="360" height="48" rx="14" fill="#5B6CFF" opacity="0.15"/>
+  <circle cx="180" cy="354" r="24" fill="#5B6CFF" opacity="0.4"/>
+  <circle cx="240" cy="354" r="24" fill="#00C2A8" opacity="0.6"/>
+  <circle cx="300" cy="354" r="24" fill="#5B6CFF" opacity="0.3"/>
+  <circle cx="360" cy="354" r="24" fill="#00C2A8" opacity="0.5"/>
+  <text x="180" y="112" fill="#1B1E36" font-family="'Inter', sans-serif" font-size="22" font-weight="600">TapTime demo</text>
+  <text x="180" y="204" fill="#1B1E36" font-family="'Inter', sans-serif" font-size="18" font-weight="500">Bestel & betaal online</text>
+</svg>
