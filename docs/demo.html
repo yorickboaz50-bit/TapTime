@@ -71,6 +71,20 @@
               <span class="hero__stat-text">Statusupdates tot aan afhaalcode</span>
             </li>
           </ul>
+          <nav class="demo-hero__shortcuts" aria-label="Snel naar demo onderdelen" data-animate="fade-up" data-animate-delay="0.15">
+            <a class="demo-hero__shortcut" href="#demo-step-select">
+              <span>1</span>
+              Kies een bar
+            </a>
+            <a class="demo-hero__shortcut" href="#demo-step-menu">
+              <span>2</span>
+              Stel je bestelling samen
+            </a>
+            <a class="demo-hero__shortcut" href="#demo-step-status">
+              <span>3</span>
+              Volg status &amp; afhalen
+            </a>
+          </nav>
         </div>
         <div class="hero__visual" data-animate="fade-left">
           <div class="demo-experience__phone">
@@ -123,41 +137,81 @@
       </div>
     </section>
 
-    <section class="demo-experience">
-      <div class="container demo-experience__inner">
-        <div class="demo-experience__copy" data-animate="fade-up">
-          <h2 class="section__title">Waarom deze demo werkt</h2>
+    <section class="demo-flow" id="demo-flow">
+      <div class="container demo-flow__inner">
+        <aside class="demo-flow__sidebar" data-animate="fade-up">
+          <h2 class="section__title">Navigeer door de demo</h2>
           <p>
-            De interactieve flow laat je zien hoe TapTime bezoekers stap voor stap begeleidt. Van het kiezen van de juiste bar tot het ophalen bij de counter: alles gebeurt in één mobiel scherm.
+            Spring direct naar het onderdeel dat je wilt laten zien aan je opdrachtgever. De stappen sluiten aan op hoe bezoekers TapTime ervaren.
           </p>
-          <ul class="demo-experience__list">
-            <li>Ontdek verschillende bars met eigen wachttijden en specials.</li>
-            <li>Voeg producten toe met upsells en ervaar het slimme mandje.</li>
-            <li>Volg live de wachtrij en ontvang automatisch een afhaalcode.</li>
-          </ul>
-        </div>
-        <div class="demo-preview__visual" data-animate="fade-left" aria-hidden="true">
-          <div class="phone-frame">
-            <span class="phone-frame__notch"></span>
-            <div class="phone-frame__inner">
-              <div class="phone-frame__screen phone-frame__screen--preview">
-                <div class="demo-preview__glow"></div>
-                <div class="demo-preview__card demo-preview__card--header">
-                  <span class="demo-preview__pill">Crew dashboard</span>
-                  <p>Volg bestellingen en wachttijden live</p>
-                </div>
-                <div class="demo-preview__card">
-                  <h4>Sneller schenken</h4>
-                  <p>TapTime spreidt drukte slim over bars en foodtrucks.</p>
-                </div>
-                <div class="demo-preview__card demo-preview__card--queue">
-                  <span class="demo-preview__queue-label">Realtime status</span>
-                  <strong>#241 gereed voor afhalen</strong>
-                  <p>Laat je bezoeker weten dat de bestelling klaarstaat.</p>
-                </div>
-              </div>
-            </div>
+          <ol class="demo-flow__nav" data-demo-nav>
+            <li><a href="#demo-step-select" data-demo-nav-link>Bar kiezen</a></li>
+            <li><a href="#demo-step-menu" data-demo-nav-link>Menu &amp; upsells</a></li>
+            <li><a href="#demo-step-checkout" data-demo-nav-link>Afrekenen</a></li>
+            <li><a href="#demo-step-status" data-demo-nav-link>Status &amp; afhalen</a></li>
+          </ol>
+          <div class="demo-flow__summary">
+            <h3>In 4 minuten klaar</h3>
+            <p>Gebruik de interactieve telefoon rechts om live mee te klikken. Elke stap op je laptop of tablet is gesynchroniseerd.</p>
           </div>
+        </aside>
+        <div class="demo-flow__content">
+          <article class="demo-step" id="demo-step-select" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 1</span>
+              <h3>Bezoekers zien alle bars met wachttijd en specials</h3>
+            </header>
+            <p>
+              Kies een bar die past bij jouw demo-scenario. Wachttijden, capaciteit en crew-notities staan er direct bij, zodat je precies kunt laten zien hoe TapTime crowd control ondersteunt.
+            </p>
+            <ul class="demo-step__highlights">
+              <li>Filter op korte wachttijd of populaire specials.</li>
+              <li>Laat zien hoe promoties per bar verschillen.</li>
+              <li>Gebruik de live-status om piekmomenten te bespreken.</li>
+            </ul>
+          </article>
+          <article class="demo-step" id="demo-step-menu" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 2</span>
+              <h3>Toon het menu met slimme upsells</h3>
+            </header>
+            <p>
+              Voeg producten toe aan het mandje zoals je bezoeker dat zou doen. Elke klik past de wachttijd aan en laat zien welke combinaties omzetverhogend werken.
+            </p>
+            <ul class="demo-step__highlights">
+              <li>Highlight bundels en premium upgrades.</li>
+              <li>Bespreek hoe voorraadbeheer per item werkt.</li>
+              <li>Gebruik favorieten om vaste bestellingen op te roepen.</li>
+            </ul>
+          </article>
+          <article class="demo-step" id="demo-step-checkout" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 3</span>
+              <h3>Laat de checkout-flow zien zonder wachtrij</h3>
+            </header>
+            <p>
+              Zodra het mandje compleet is, doorloopt de bezoeker een duidelijke betaalflow. Toon hoe mobiel betalen, vouchers en crew-kortingen in één scherm samenkomen.
+            </p>
+            <ul class="demo-step__highlights">
+              <li>Laat verschillende betaalmethodes zien.</li>
+              <li>Benadruk hoe upsells automatisch worden meegenomen.</li>
+              <li>Bespreek fraude- en leeftijdscontroles tijdens de demo.</li>
+            </ul>
+          </article>
+          <article class="demo-step" id="demo-step-status" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 4</span>
+              <h3>Volg live de status tot en met afhalen</h3>
+            </header>
+            <p>
+              Na betaling verschijnt de afhaalcode direct in beeld en in het crew-dashboard. Gebruik deze stap om wachtrijcommunicatie en pushnotificaties te demonstreren.
+            </p>
+            <ul class="demo-step__highlights">
+              <li>Bespreek pushnotificaties en sms-updates.</li>
+              <li>Laat het orderboard zien met realtime status.</li>
+              <li>Leg uit hoe crewleden orders als gereed markeren.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
