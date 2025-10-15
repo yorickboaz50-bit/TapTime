@@ -94,52 +94,66 @@
         <div class="demo-hero__visual" aria-label="Interactieve TapTime demo">
           <div class="demo-phone">
             <span class="demo-phone__notch"></span>
-            <div class="demo-phone__screen">
-              <header class="demo-phone__header">
-                <div>
-                  <p class="demo-phone__bar">TapTime Bar • Area B</p>
-                  <p class="demo-phone__wait">Nog 3 minuten wachten</p>
+            <div class="demo-phone__screen" data-phone-app>
+              <header class="phone-app__header">
+                <button class="phone-app__back" type="button" aria-label="Ga terug" data-phone-back hidden>
+                  <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M10.5 3.5 6 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="phone-app__headings">
+                  <p class="phone-app__eyebrow" data-phone-step>Stap 1 van 3</p>
+                  <h3 class="phone-app__title" data-phone-title>Kies je bar</h3>
+                  <p class="phone-app__subtitle" data-phone-subtitle>Check wachttijd en specials</p>
                 </div>
-                <span class="demo-phone__badge">Order 24</span>
+                <span class="phone-app__badge" data-phone-badge hidden></span>
               </header>
-              <div class="demo-phone__order">
-                <div class="demo-phone__item">
-                  <div>
-                    <p class="demo-phone__item-name">2× IPA Local Legend</p>
-                    <p class="demo-phone__item-meta">+ Glas retourkorting</p>
+
+              <main class="phone-app__body">
+                <section class="phone-app__view is-active" data-phone-view="bars">
+                  <ul class="phone-app__list" data-phone-bars></ul>
+                </section>
+
+                <section class="phone-app__view" data-phone-view="menu">
+                  <div class="phone-app__menu">
+                    <div class="phone-app__menu-empty" data-phone-menu-empty>
+                      <p>Selecteer een bar om het menu te bekijken.</p>
+                    </div>
+                    <div class="phone-app__menu-content" data-phone-menu hidden></div>
                   </div>
-                  <span class="demo-phone__item-price">€12,40</span>
-                </div>
-                <div class="demo-phone__item">
-                  <div>
-                    <p class="demo-phone__item-name">1× Gin &amp; Tonic Citrus</p>
-                    <p class="demo-phone__item-meta">Crew-note: zonder ijs</p>
+                  <div class="phone-app__summary" data-phone-cart hidden>
+                    <div class="phone-app__summary-header">
+                      <h4>Mandje</h4>
+                      <button class="phone-app__clear" type="button" data-phone-clear>Reset</button>
+                    </div>
+                    <ul class="phone-app__cart-items" data-phone-cart-items></ul>
+                    <div class="phone-app__summary-footer">
+                      <div>
+                        <p class="phone-app__summary-label">Totaal</p>
+                        <p class="phone-app__summary-meta">TapTime Pay</p>
+                      </div>
+                      <strong class="phone-app__summary-total" data-phone-total>€0,00</strong>
+                    </div>
                   </div>
-                  <span class="demo-phone__item-price">€7,80</span>
-                </div>
-              </div>
-              <div class="demo-phone__totals">
-                <div>
-                  <p class="demo-phone__total-label">Totaal</p>
-                  <p class="demo-phone__total-meta">Betaald met TapTime Pay</p>
-                </div>
-                <p class="demo-phone__total-amount">€20,20</p>
-              </div>
-              <div class="demo-phone__status">
-                <div class="demo-phone__step is-done">
-                  <span>1</span>
-                  <p>Order ontvangen</p>
-                </div>
-                <div class="demo-phone__step is-active">
-                  <span>2</span>
-                  <p>Aan het bereiden</p>
-                </div>
-                <div class="demo-phone__step">
-                  <span>3</span>
-                  <p>Klaar voor afhalen</p>
-                </div>
-              </div>
-              <button class="demo-phone__cta" type="button">Toon afhaalcode</button>
+                </section>
+
+                <section class="phone-app__view" data-phone-view="status">
+                  <div class="phone-app__status">
+                    <p class="phone-app__order" data-phone-order></p>
+                    <ul class="phone-app__order-list" data-phone-order-items></ul>
+                    <p class="phone-app__ready" data-phone-ready></p>
+                    <div class="phone-app__review">
+                      <p>Hoe was je ervaring?</p>
+                      <div class="phone-app__rating" data-phone-rating></div>
+                      <p class="phone-app__thanks" data-phone-thanks hidden>Bedankt voor je review! 🎉</p>
+                    </div>
+                  </div>
+                </section>
+              </main>
+
+              <footer class="phone-app__footer">
+                <button class="phone-app__action" type="button" data-phone-next disabled>Ga verder</button>
+              </footer>
             </div>
           </div>
         </div>

@@ -1249,6 +1249,552 @@ if (demoRoot) {
   });
 }
 
+const phoneAppRoot = document.querySelector('[data-phone-app]');
+
+if (phoneAppRoot) {
+  const views = Array.from(phoneAppRoot.querySelectorAll('[data-phone-view]'));
+  const barListEl = phoneAppRoot.querySelector('[data-phone-bars]');
+  const menuEmptyEl = phoneAppRoot.querySelector('[data-phone-menu-empty]');
+  const menuContentEl = phoneAppRoot.querySelector('[data-phone-menu]');
+  const cartWrapper = phoneAppRoot.querySelector('[data-phone-cart]');
+  const cartItemsEl = phoneAppRoot.querySelector('[data-phone-cart-items]');
+  const totalEl = phoneAppRoot.querySelector('[data-phone-total]');
+  const nextButton = phoneAppRoot.querySelector('[data-phone-next]');
+  const backButton = phoneAppRoot.querySelector('[data-phone-back]');
+  const clearButton = phoneAppRoot.querySelector('[data-phone-clear]');
+  const stepEl = phoneAppRoot.querySelector('[data-phone-step]');
+  const titleEl = phoneAppRoot.querySelector('[data-phone-title]');
+  const subtitleEl = phoneAppRoot.querySelector('[data-phone-subtitle]');
+  const badgeEl = phoneAppRoot.querySelector('[data-phone-badge]');
+  const orderEl = phoneAppRoot.querySelector('[data-phone-order]');
+  const orderItemsEl = phoneAppRoot.querySelector('[data-phone-order-items]');
+  const readyEl = phoneAppRoot.querySelector('[data-phone-ready]');
+  const ratingWrapper = phoneAppRoot.querySelector('[data-phone-rating]');
+  const thanksEl = phoneAppRoot.querySelector('[data-phone-thanks]');
+  const reviewWrapper = phoneAppRoot.querySelector('.phone-app__review');
+
+  const currencyFormatter = new Intl.NumberFormat('nl-NL', {
+    style: 'currency',
+    currency: 'EUR'
+  });
+
+  const phoneBars = [
+    {
+      id: 'main-stage',
+      name: 'Main Stage Bar',
+      area: 'Area A',
+      wait: 'Nog 3 minuten wachten',
+      crowd: 'Doorstroom: Gemiddeld',
+      highlight: 'Special: Frozen Margarita',
+      menu: [
+        { id: 'ipa', name: 'IPA Local Legend', description: '33cl • Dry-hopped', price: 6.2 },
+        { id: 'lager', name: 'Festival Lager', description: '50cl • TapTime beker', price: 5.5 },
+        { id: 'pretzel', name: 'Zoute Pretzel', description: 'Vers uit de oven', price: 4 }
+      ]
+    },
+    {
+      id: 'craft-corner',
+      name: 'Craft Beer Corner',
+      area: 'Area B',
+      wait: 'Nog 5 minuten wachten',
+      crowd: 'Doorstroom: Druk',
+      highlight: 'Limited: Mango Pale Ale',
+      menu: [
+        { id: 'stout', name: 'Midnight Stout', description: 'Nitro • 33cl', price: 6.8 },
+        { id: 'pale', name: 'Mango Pale Ale', description: 'Fruitig & fris', price: 6.5 },
+        { id: 'nachos', name: 'Loaded Nacho Tray', description: 'Cheddar • Jalapeño', price: 7.5 }
+      ]
+    },
+    {
+      id: 'cocktail-lab',
+      name: 'Cocktail Lab',
+      area: 'Area C',
+      wait: 'Nog 2 minuten wachten',
+      crowd: 'Doorstroom: Rustig',
+      highlight: 'Signature: Gin & Tonic Citrus',
+      menu: [
+        { id: 'gt', name: 'Gin & Tonic Citrus', description: 'Met sinaasappelbitters', price: 7.8 },
+        { id: 'spritz', name: 'Sunset Spritz', description: 'Aperitivo • bubbels', price: 7.2 },
+        { id: 'water', name: 'Spa Blauw', description: '500ml • gekoeld', price: 2.5 }
+      ]
+    }
+  ];
+
+  const phoneState = {
+    view: 'bars',
+    selectedBarId: null,
+    cart: new Map(),
+    orderNumber: null,
+    orderItems: [],
+    rating: null
+  };
+
+  const getBarById = (id) => phoneBars.find((bar) => bar.id === id);
+  const getSelectedBar = () => getBarById(phoneState.selectedBarId ?? '');
+
+  const showView = (view) => {
+    phoneState.view = view;
+    views.forEach((section) => {
+      section.classList.toggle('is-active', section.dataset.phoneView === view);
+    });
+  };
+
+  const formatPrice = (value) => currencyFormatter.format(value);
+
+  const renderHeader = () => {
+    const bar = getSelectedBar();
+    const configByView = {
+      bars: {
+        step: 'Stap 1 van 3',
+        title: 'Kies je bar',
+        subtitle: 'Check wachttijd en specials',
+        badge: ''
+      },
+      menu: {
+        step: 'Stap 2 van 3',
+        title: 'Stel je bestelling samen',
+        subtitle: bar ? `${bar.wait} • ${bar.crowd}` : 'Selecteer je favoriete bar',
+        badge: bar ? bar.name : ''
+      },
+      status: {
+        step: 'Stap 3 van 3',
+        title: 'Order ontvangen',
+        subtitle: 'Toon je code en laat een review achter',
+        badge: phoneState.orderNumber ? `Order ${phoneState.orderNumber}` : ''
+      }
+    };
+
+    const config = configByView[phoneState.view];
+    if (stepEl) stepEl.textContent = config.step;
+    if (titleEl) titleEl.textContent = config.title;
+    if (subtitleEl) subtitleEl.textContent = config.subtitle;
+
+    if (badgeEl) {
+      if (config.badge) {
+        badgeEl.textContent = config.badge;
+        badgeEl.hidden = false;
+      } else {
+        badgeEl.hidden = true;
+      }
+    }
+
+    if (backButton) {
+      backButton.hidden = phoneState.view === 'bars';
+    }
+  };
+
+  const renderBars = () => {
+    if (!barListEl) {
+      return;
+    }
+
+    barListEl.innerHTML = '';
+    phoneBars.forEach((bar) => {
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.barId = bar.id;
+      button.setAttribute('aria-pressed', bar.id === phoneState.selectedBarId ? 'true' : 'false');
+
+      const title = document.createElement('strong');
+      title.textContent = `${bar.name} • ${bar.area}`;
+
+      const wait = document.createElement('span');
+      wait.textContent = bar.wait;
+
+      const crowd = document.createElement('span');
+      crowd.textContent = bar.crowd;
+
+      const chip = document.createElement('span');
+      chip.className = 'phone-app__chip';
+      chip.textContent = bar.highlight;
+
+      button.append(title, wait, crowd, chip);
+      item.append(button);
+      barListEl.append(item);
+    });
+  };
+
+  const renderMenu = () => {
+    const bar = getSelectedBar();
+    if (!menuContentEl || !menuEmptyEl) {
+      return;
+    }
+
+    if (!bar) {
+      menuEmptyEl.hidden = false;
+      menuContentEl.hidden = true;
+      menuContentEl.innerHTML = '';
+      return;
+    }
+
+    menuEmptyEl.hidden = true;
+    menuContentEl.hidden = false;
+    menuContentEl.innerHTML = '';
+
+    const highlight = document.createElement('p');
+    highlight.className = 'phone-app__notice';
+    highlight.textContent = bar.highlight;
+    menuContentEl.append(highlight);
+
+    bar.menu.forEach((product) => {
+      const row = document.createElement('div');
+      row.className = 'phone-app__product';
+
+      const info = document.createElement('div');
+      info.className = 'phone-app__product-info';
+
+      const title = document.createElement('p');
+      title.className = 'phone-app__product-title';
+      title.textContent = product.name;
+
+      const meta = document.createElement('p');
+      meta.className = 'phone-app__product-meta';
+      meta.textContent = product.description;
+
+      info.append(title, meta);
+
+      const action = document.createElement('div');
+      action.className = 'phone-app__product-action';
+
+      const price = document.createElement('span');
+      price.className = 'phone-app__price';
+      price.textContent = formatPrice(product.price);
+
+      const addButton = document.createElement('button');
+      addButton.className = 'phone-app__add';
+      addButton.type = 'button';
+      addButton.textContent = '+ Voeg toe';
+      addButton.dataset.productId = product.id;
+
+      action.append(price, addButton);
+      row.append(info, action);
+      menuContentEl.append(row);
+    });
+  };
+
+  const renderCart = () => {
+    if (!cartWrapper || !cartItemsEl || !totalEl) {
+      return;
+    }
+
+    cartItemsEl.innerHTML = '';
+
+    const items = Array.from(phoneState.cart.values());
+    if (!items.length) {
+      const empty = document.createElement('li');
+      empty.className = 'phone-app__cart-empty';
+      empty.textContent = 'Je mandje is nog leeg. Voeg producten toe.';
+      cartItemsEl.append(empty);
+    } else {
+      items.forEach((item) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'phone-app__cart-item';
+
+        const title = document.createElement('strong');
+        title.textContent = `${item.quantity}× ${item.name}`;
+
+        const controls = document.createElement('div');
+        controls.className = 'phone-app__cart-controls';
+
+        const decrease = document.createElement('button');
+        decrease.className = 'phone-app__quantity';
+        decrease.type = 'button';
+        decrease.dataset.cartAction = 'decrease';
+        decrease.dataset.itemId = item.id;
+        decrease.textContent = '−';
+
+        const quantity = document.createElement('span');
+        quantity.textContent = formatPrice(item.price * item.quantity);
+
+        const increase = document.createElement('button');
+        increase.className = 'phone-app__quantity';
+        increase.type = 'button';
+        increase.dataset.cartAction = 'increase';
+        increase.dataset.itemId = item.id;
+        increase.textContent = '+';
+
+        controls.append(decrease, quantity, increase);
+        listItem.append(title, controls);
+        cartItemsEl.append(listItem);
+      });
+    }
+
+    const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    totalEl.textContent = formatPrice(total);
+    cartWrapper.hidden = false;
+    if (clearButton) {
+      clearButton.disabled = items.length === 0;
+    }
+  };
+
+  const renderStatus = () => {
+    if (!orderEl || !orderItemsEl || !readyEl) {
+      return;
+    }
+
+    const bar = getSelectedBar();
+    orderItemsEl.innerHTML = '';
+
+    if (!phoneState.orderItems.length || !phoneState.orderNumber || !bar) {
+      orderEl.textContent = 'Plaats eerst een bestelling';
+      readyEl.textContent = '';
+      if (reviewWrapper) {
+        reviewWrapper.hidden = true;
+      }
+      return;
+    }
+
+    orderEl.textContent = `Ordercode TT-${phoneState.orderNumber}`;
+    phoneState.orderItems.forEach((item) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${item.quantity}× ${item.name} • ${formatPrice(item.total)}`;
+      orderItemsEl.append(listItem);
+    });
+
+    readyEl.textContent = `Je bestelling staat bijna klaar bij ${bar.name} (${bar.area}).`;
+    if (reviewWrapper) {
+      reviewWrapper.hidden = false;
+    }
+  };
+
+  const renderRating = () => {
+    if (!ratingWrapper || !thanksEl) {
+      return;
+    }
+
+    ratingWrapper.innerHTML = '';
+    const ratings = [
+      { value: 1, label: '😕' },
+      { value: 2, label: '😐' },
+      { value: 3, label: '🙂' },
+      { value: 4, label: '😄' },
+      { value: 5, label: '🤩' }
+    ];
+
+    ratings.forEach((entry) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = `${entry.label} ${entry.value}`;
+      button.dataset.ratingValue = String(entry.value);
+      button.setAttribute('aria-pressed', phoneState.rating === entry.value ? 'true' : 'false');
+      ratingWrapper.append(button);
+    });
+
+    thanksEl.hidden = phoneState.rating == null;
+  };
+
+  const updateNextButton = () => {
+    if (!nextButton) {
+      return;
+    }
+
+    if (phoneState.view === 'bars') {
+      nextButton.textContent = 'Ga verder';
+      nextButton.disabled = !phoneState.selectedBarId;
+    } else if (phoneState.view === 'menu') {
+      nextButton.textContent = 'Bestel & betaal';
+      nextButton.disabled = phoneState.cart.size === 0;
+    } else {
+      nextButton.textContent = 'Opnieuw bestellen';
+      nextButton.disabled = false;
+    }
+  };
+
+  const resetFlow = () => {
+    phoneState.view = 'bars';
+    phoneState.selectedBarId = null;
+    phoneState.cart.clear();
+    phoneState.orderNumber = null;
+    phoneState.orderItems = [];
+    phoneState.rating = null;
+    showView('bars');
+    renderBars();
+    renderMenu();
+    renderCart();
+    renderStatus();
+    renderRating();
+    renderHeader();
+    updateNextButton();
+  };
+
+  const updateCartQuantity = (id, delta) => {
+    if (!id) {
+      return;
+    }
+
+    const entry = phoneState.cart.get(id);
+    if (!entry) {
+      return;
+    }
+
+    const nextQuantity = entry.quantity + delta;
+    if (nextQuantity <= 0) {
+      phoneState.cart.delete(id);
+    } else {
+      phoneState.cart.set(id, { ...entry, quantity: nextQuantity });
+    }
+
+    renderCart();
+    updateNextButton();
+  };
+
+  const addProductToCart = (productId) => {
+    const bar = getSelectedBar();
+    if (!bar) {
+      return;
+    }
+
+    const product = bar.menu.find((item) => item.id === productId);
+    if (!product) {
+      return;
+    }
+
+    const existing = phoneState.cart.get(product.id);
+    if (existing) {
+      phoneState.cart.set(product.id, {
+        ...existing,
+        quantity: existing.quantity + 1
+      });
+    } else {
+      phoneState.cart.set(product.id, {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1
+      });
+    }
+
+    renderCart();
+    updateNextButton();
+  };
+
+  const placeOrder = () => {
+    const bar = getSelectedBar();
+    if (!bar || phoneState.cart.size === 0) {
+      return;
+    }
+
+    const items = Array.from(phoneState.cart.values());
+    phoneState.orderItems = items.map((item) => ({
+      name: item.name,
+      quantity: item.quantity,
+      total: item.price * item.quantity
+    }));
+    phoneState.orderNumber = `${Math.floor(Math.random() * 900) + 100}`;
+    phoneState.cart.clear();
+    phoneState.rating = null;
+
+    showView('status');
+    renderCart();
+    renderStatus();
+    renderRating();
+    renderHeader();
+    updateNextButton();
+  };
+
+  const goToMenu = () => {
+    showView('menu');
+    renderHeader();
+    updateNextButton();
+  };
+
+  barListEl?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-bar-id]');
+    if (!button) {
+      return;
+    }
+
+    phoneState.selectedBarId = button.dataset.barId ?? null;
+    phoneState.cart.clear();
+    phoneState.orderNumber = null;
+    phoneState.orderItems = [];
+    phoneState.rating = null;
+    renderBars();
+    renderMenu();
+    renderCart();
+    renderStatus();
+    renderRating();
+    renderHeader();
+    updateNextButton();
+  });
+
+  menuContentEl?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-product-id]');
+    if (!button) {
+      return;
+    }
+
+    addProductToCart(button.dataset.productId ?? '');
+  });
+
+  cartItemsEl?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-cart-action]');
+    if (!button) {
+      return;
+    }
+
+    const { cartAction, itemId } = button.dataset;
+    if (cartAction === 'increase') {
+      updateCartQuantity(itemId ?? '', 1);
+    } else if (cartAction === 'decrease') {
+      updateCartQuantity(itemId ?? '', -1);
+    }
+  });
+
+  clearButton?.addEventListener('click', () => {
+    phoneState.cart.clear();
+    renderCart();
+    updateNextButton();
+  });
+
+  ratingWrapper?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-rating-value]');
+    if (!button) {
+      return;
+    }
+
+    const ratingValue = Number.parseInt(button.dataset.ratingValue ?? '', 10);
+    if (Number.isNaN(ratingValue)) {
+      return;
+    }
+
+    phoneState.rating = ratingValue;
+    renderRating();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    if (phoneState.view === 'bars') {
+      if (!phoneState.selectedBarId) {
+        return;
+      }
+
+      goToMenu();
+      return;
+    }
+
+    if (phoneState.view === 'menu') {
+      placeOrder();
+      return;
+    }
+
+    resetFlow();
+  });
+
+  backButton?.addEventListener('click', () => {
+    if (phoneState.view === 'status') {
+      showView(phoneState.orderNumber ? 'menu' : 'bars');
+    } else if (phoneState.view === 'menu') {
+      showView('bars');
+    }
+
+    renderHeader();
+    updateNextButton();
+  });
+
+  resetFlow();
+}
+
 const initEnhancements = () => {
   initializeIcons();
   setupMotionAnimations();
