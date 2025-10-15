@@ -16,19 +16,12 @@
   <link rel="stylesheet" href="ios-demo.css" />
 </head>
 <body class="ios-demo">
-  <a class="ios-demo__back-link" href="index.html" aria-label="Terug naar TapTime.nl">TapTime</a>
-  <div class="ios-demo__frame">
-    <div class="ios-demo__device" role="region" aria-label="TapTime bestelervaring">
-      <header class="ios-demo__status" aria-hidden="true">
-        <span class="ios-demo__time" data-ios-time>9:41</span>
-        <div class="ios-demo__status-icons">
-          <span class="ios-demo__status-signal"></span>
-          <span class="ios-demo__status-wifi"></span>
-          <span class="ios-demo__status-battery"></span>
-        </div>
-      </header>
+  <header class="ios-demo__topbar">
+    <a class="ios-demo__back-link" href="index.html" aria-label="Terug naar TapTime.nl">TapTime</a>
+  </header>
 
-      <div class="ios-demo__app" data-phone-app>
+  <main class="ios-demo__shell" role="region" aria-label="TapTime bestelervaring">
+    <div class="ios-demo__app" data-phone-app>
         <header class="phone-app__header">
           <button class="phone-app__back" type="button" aria-label="Ga terug" data-phone-back hidden>
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -97,21 +90,10 @@
         </footer>
       </div>
     </div>
-  </div>
+  </main>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://unpkg.com/@motionone/dom"></script>
   <script src="app.js"></script>
-  <script>
-    const timeEl = document.querySelector('[data-ios-time]');
-    const updateIosTime = () => {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      timeEl.textContent = `${hours}:${minutes}`;
-    };
-    updateIosTime();
-    setInterval(updateIosTime, 60000);
-  </script>
 </body>
 </html>
