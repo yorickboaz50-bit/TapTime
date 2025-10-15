@@ -42,30 +42,39 @@
   <main>
     <section class="hero" id="hero">
       <div class="container hero__inner">
-        <div class="hero__content">
-          <span class="hero__eyebrow">Conceptwebsite</span>
+        <div class="hero__content" data-animate="fade-up">
+          <span class="hero__eyebrow">
+            <i data-lucide="sparkles" aria-hidden="true"></i>
+            Conceptwebsite
+          </span>
           <h1 class="hero__title">Bestel. Betaal. Haal op. Zónder wachtrij.</h1>
           <p class="hero__subtitle">TapTime is het webplatform voor festivals en evenementen waar bezoekers drankjes vooraf bestellen, veilig betalen en razendsnel ophalen bij de bar die het beste uitkomt.</p>
           <div class="hero__actions">
-            <a href="#contact" class="btn btn--primary" data-demo-button>Demo aanvragen</a>
-            <a href="#" class="btn btn--ghost" role="button">Download infosheet (PDF)</a>
+            <a href="#contact" class="btn btn--primary" data-demo-button>
+              <i data-lucide="play" aria-hidden="true"></i>
+              Demo aanvragen
+            </a>
+            <a href="#" class="btn btn--ghost" role="button">
+              <i data-lucide="download-cloud" aria-hidden="true"></i>
+              Download infosheet (PDF)
+            </a>
           </div>
           <ul class="hero__stats" aria-label="Voorbeeld wachttijden">
-            <li class="hero__stat">
-              <span class="status-dot status-dot--calm" aria-hidden="true"></span>
+            <li class="hero__stat" data-animate="fade-up" data-animate-delay="0.1">
+              <i data-lucide="signal" aria-hidden="true"></i>
               <span class="hero__stat-text">Main Stage Bar · Rustig</span>
             </li>
-            <li class="hero__stat">
-              <span class="status-dot status-dot--busy" aria-hidden="true"></span>
+            <li class="hero__stat" data-animate="fade-up" data-animate-delay="0.2">
+              <i data-lucide="flame" aria-hidden="true"></i>
               <span class="hero__stat-text">Craft Beer Corner · Druk</span>
             </li>
-            <li class="hero__stat">
-              <span class="status-dot status-dot--steady" aria-hidden="true"></span>
+            <li class="hero__stat" data-animate="fade-up" data-animate-delay="0.3">
+              <i data-lucide="waves" aria-hidden="true"></i>
               <span class="hero__stat-text">Cocktail Lab · Doorstroming goed</span>
             </li>
           </ul>
         </div>
-        <div class="hero__visual">
+        <div class="hero__visual" data-animate="fade-left">
           <figure class="hero__photo">
             <img
               src="https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=1200&q=80"
@@ -80,73 +89,53 @@
 
     <section class="section" id="product">
       <div class="container">
-        <div class="section__intro">
-          <span class="section__eyebrow">Waarom TapTime?</span>
+        <div class="section__intro" data-animate="fade-up">
+          <span class="section__eyebrow">
+            <i data-lucide="sparkle" aria-hidden="true"></i>
+            Waarom TapTime?
+          </span>
           <h2 class="section__title">Verkort de rij, verhoog de beleving</h2>
           <p class="section__subtitle">Een digitale bestelstraat die aansluit bij hoe bezoekers zich bewegen over het terrein en hoe bars werken.</p>
         </div>
         <div class="grid grid--benefits" role="list">
-          <article class="card card--benefit" role="listitem">
+          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="0">
             <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
-                <path d="M12 20h8m0 0l-3-3m3 3l-3 3M21 14h7a2 2 0 012 2v12" stroke="#5B6CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <i data-lucide="clock-3"></i>
             </div>
             <h3 class="card__title">Nooit meer lang wachten</h3>
             <p class="card__text">Bezoekers bestellen onderweg en pikken hun drankjes op zodra ze arriveren.</p>
           </article>
-          <article class="card card--benefit" role="listitem">
+          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="1">
             <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
-                <path d="M20 26c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" stroke="#5B6CFF" stroke-width="2" />
-                <path d="M20 12V9m0 22v-3m8-9h3M9 20h3" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" />
-              </svg>
+              <i data-lucide="shield-check"></i>
             </div>
             <h3 class="card__title">Betaal veilig</h3>
             <p class="card__text">Ondersteunt iDEAL, Apple Pay en creditcard. Geen losse munten of bonnen meer.</p>
           </article>
-          <article class="card card--benefit" role="listitem">
+          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="2">
             <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
-                <path d="M12 15l8-4 8 4-8 4-8-4z" stroke="#5B6CFF" stroke-width="2" stroke-linejoin="round" />
-                <path d="M12 21l8 4 8-4" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <i data-lucide="navigation-2"></i>
             </div>
             <h3 class="card__title">Kies je bar</h3>
             <p class="card__text">Laat bezoekers zelf bepalen waar ze ophalen, inclusief realtime druktemeter.</p>
           </article>
-          <article class="card card--benefit" role="listitem">
+          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="3">
             <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
-                <path d="M12 24l6 4 10-12" stroke="#5B6CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M12 16h16" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" />
-              </svg>
+              <i data-lucide="users"></i>
             </div>
             <h3 class="card__title">Minder rijen</h3>
             <p class="card__text">Stuur de drukte en spreid pieken door bezoekers vooraf te laten plannen.</p>
           </article>
-          <article class="card card--benefit" role="listitem">
+          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="4">
             <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
-                <path d="M13 25h14M13 20h14M13 15h14" stroke="#5B6CFF" stroke-width="2" stroke-linecap="round" />
-                <path d="M23 10l5 5-5 5" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <i data-lucide="trending-up"></i>
             </div>
             <h3 class="card__title">Meer omzet</h3>
             <p class="card__text">Voorkom afhakers: bezoekers bestellen terwijl ze nog zin hebben in een drankje.</p>
           </article>
-          <article class="card card--benefit" role="listitem">
+          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="5">
             <div class="card__icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="12" fill="#EEF1FF" />
-                <path d="M20 12v16M12 20h16" stroke="#00C2A8" stroke-width="2" stroke-linecap="round" />
-                <circle cx="20" cy="20" r="6" stroke="#5B6CFF" stroke-width="2" />
-              </svg>
+              <i data-lucide="radar"></i>
             </div>
             <h3 class="card__title">Realtime dashboard</h3>
             <p class="card__text">Zie verkoopcijfers en drukte per bar in één overzicht om direct bij te sturen.</p>
@@ -157,39 +146,51 @@
 
     <section class="section section--split" id="bezoekers">
       <div class="container split">
-        <div class="split__column">
+        <div class="split__column" data-animate="fade-up">
           <h2 class="section__title">Voor bezoekers</h2>
           <ol class="steps">
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">1</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="0">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">1</span>
+                <i data-lucide="scan"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Scan of open de webapp</h3>
                 <p class="steps__text">Geen download nodig. TapTime werkt in elke mobiele browser.</p>
               </div>
             </li>
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">2</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="1">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">2</span>
+                <i data-lucide="map-pin"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Kies je bar en drankje</h3>
                 <p class="steps__text">Bekijk menu’s per bar en zie direct de actuele wachttijd.</p>
               </div>
             </li>
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">3</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="2">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">3</span>
+                <i data-lucide="wallet"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Betaal in één keer</h3>
                 <p class="steps__text">Reken af met iDEAL, Apple Pay of creditcard. Ontvang direct je afhaalcode.</p>
               </div>
             </li>
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">4</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="3">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">4</span>
+                <i data-lucide="party-popper"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Haal relaxed op</h3>
                 <p class="steps__text">Je krijgt een pushmelding zodra de bar je bestelling klaarzet.</p>
               </div>
             </li>
           </ol>
-          <figure class="split__photo">
+          <figure class="split__photo" data-animate="fade-left">
             <img
               src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
               alt="Vriendengroep die in een festivalrij lacht terwijl ze op drankjes wachten"
@@ -198,39 +199,51 @@
             <figcaption class="visually-hidden">Sfeerbeeld van bezoekers die ontspannen wachten op hun drankjes.</figcaption>
           </figure>
         </div>
-        <div class="split__column" id="organisatoren">
+        <div class="split__column" id="organisatoren" data-animate="fade-up">
           <h2 class="section__title">Voor organisatoren</h2>
           <ol class="steps steps--accent">
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">1</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="0">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">1</span>
+                <i data-lucide="settings-2"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Configureer menu’s en bars</h3>
                 <p class="steps__text">Zet producten, prijzen en openingstijden klaar per bar of per crew.</p>
               </div>
             </li>
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">2</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="1">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">2</span>
+                <i data-lucide="inbox"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Ontvang digitale bestellingen</h3>
                 <p class="steps__text">Personeel ziet betaalde orders binnenkomen op de TapTime keukenschermen.</p>
               </div>
             </li>
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">3</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="2">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">3</span>
+                <i data-lucide="check-circle-2"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Markeer ‘klaar’</h3>
                 <p class="steps__text">Met één tik krijgen bezoekers een melding dat ze kunnen ophalen.</p>
               </div>
             </li>
-            <li class="steps__item">
-              <span class="steps__icon" aria-hidden="true">4</span>
+            <li class="steps__item" data-animate="fade-up" data-animate-order="3">
+              <span class="steps__icon" aria-hidden="true">
+                <span class="steps__index">4</span>
+                <i data-lucide="chart-line"></i>
+              </span>
               <div>
                 <h3 class="steps__title">Bekijk realtime data</h3>
                 <p class="steps__text">Volg omzet, wachttijden en pieken live en stuur extra crew waar nodig.</p>
               </div>
             </li>
           </ol>
-          <figure class="split__photo">
+          <figure class="split__photo" data-animate="fade-left">
             <img
               src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80"
               alt="Barmedewerker die biertjes aan het tappen is achter een festivalbar"
@@ -244,13 +257,16 @@
 
     <section class="section section--gallery" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="section__intro">
-          <span class="section__eyebrow">Sfeerimpressie</span>
+        <div class="section__intro" data-animate="fade-up">
+          <span class="section__eyebrow">
+            <i data-lucide="camera"></i>
+            Sfeerimpressie
+          </span>
           <h2 class="section__title" id="gallery-heading">Borrelsfeer zonder wachttijd</h2>
           <p class="section__subtitle">TapTime verbindt het festivalgevoel met snelle service: proosten, feesten en doorlopen.</p>
         </div>
         <div class="gallery" role="list">
-          <figure class="gallery__item" role="listitem">
+          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="0">
             <img
               src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1000&q=80"
               alt="Publiek dat feest tijdens een openluchtfestival met confetti"
@@ -258,7 +274,7 @@
             />
             <figcaption class="gallery__caption">Energieke mainstage waar bezoekers volop genieten.</figcaption>
           </figure>
-          <figure class="gallery__item" role="listitem">
+          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="1">
             <img
               src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80"
               alt="Twee handen die met koude biertjes klinken"
@@ -266,7 +282,7 @@
             />
             <figcaption class="gallery__caption">Vers getapt bier binnen handbereik.</figcaption>
           </figure>
-          <figure class="gallery__item" role="listitem">
+          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="2">
             <img
               src="https://images.unsplash.com/photo-1444212477490-ca407925329e?auto=format&fit=crop&w=1000&q=80"
               alt="Rij festivalbezoekers die richting de bar loopt"
@@ -274,7 +290,7 @@
             />
             <figcaption class="gallery__caption">Slim spreiden van wachtrijen over het terrein.</figcaption>
           </figure>
-          <figure class="gallery__item" role="listitem">
+          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="3">
             <img
               src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1000&q=80"
               alt="Barmedewerker die cocktails afwerkt onder kleurrijk licht"
@@ -288,28 +304,43 @@
 
     <section class="section section--timeline" id="werking">
       <div class="container">
-        <div class="section__intro">
-          <span class="section__eyebrow">Hoe het werkt</span>
+        <div class="section__intro" data-animate="fade-up">
+          <span class="section__eyebrow">
+            <i data-lucide="workflow"></i>
+            Hoe het werkt
+          </span>
           <h2 class="section__title">Binnen vier stappen aan de beurt</h2>
         </div>
         <div class="timeline">
-          <div class="timeline__item">
-            <div class="timeline__icon" aria-hidden="true">1</div>
+          <div class="timeline__item" data-animate="fade-up" data-animate-order="0">
+            <div class="timeline__icon" aria-hidden="true">
+              <span class="timeline__index">1</span>
+              <i data-lucide="qr-code"></i>
+            </div>
             <h3 class="timeline__title">Open TapTime</h3>
             <p class="timeline__text">Bezoekers scannen een QR-code of openen de link van het evenement. Geen account nodig.</p>
           </div>
-          <div class="timeline__item">
-            <div class="timeline__icon" aria-hidden="true">2</div>
+          <div class="timeline__item" data-animate="fade-up" data-animate-order="1">
+            <div class="timeline__icon" aria-hidden="true">
+              <span class="timeline__index">2</span>
+              <i data-lucide="list-checks"></i>
+            </div>
             <h3 class="timeline__title">Bekijk menu en wachttijd</h3>
             <p class="timeline__text">Elke bar toont producten, voorraad en een drukte-indicator zodat bezoekers slim kiezen.</p>
           </div>
-          <div class="timeline__item">
-            <div class="timeline__icon" aria-hidden="true">3</div>
+          <div class="timeline__item" data-animate="fade-up" data-animate-order="2">
+            <div class="timeline__icon" aria-hidden="true">
+              <span class="timeline__index">3</span>
+              <i data-lucide="credit-card"></i>
+            </div>
             <h3 class="timeline__title">Betaal online</h3>
             <p class="timeline__text">Met een paar taps is de bestelling betaald. TapTime genereert automatisch een afhaalcode.</p>
           </div>
-          <div class="timeline__item">
-            <div class="timeline__icon" aria-hidden="true">4</div>
+          <div class="timeline__item" data-animate="fade-up" data-animate-order="3">
+            <div class="timeline__icon" aria-hidden="true">
+              <span class="timeline__index">4</span>
+              <i data-lucide="cup-soda"></i>
+            </div>
             <h3 class="timeline__title">Haal je bestelling op</h3>
             <p class="timeline__text">Zodra de bar klaar is, gaat er een notificatie uit en staat het drankje klaar bij de pick-up counter.</p>
           </div>
@@ -321,17 +352,17 @@
       <div class="container">
         <h2 class="visually-hidden" id="partners-heading">Partnerfestivals</h2>
         <div class="logos" role="list">
-          <figure class="logos__item" role="listitem">
-            <img src="assets/logo-placeholder.svg" alt="Partner Festival 1" />
+          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="0">
+            <img src="assets/partners/mysteryland.svg" alt="Mysteryland" loading="lazy" />
           </figure>
-          <figure class="logos__item" role="listitem">
-            <img src="assets/logo-placeholder.svg" alt="Partner Festival 2" />
+          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="1">
+            <img src="assets/partners/tomorrowland.svg" alt="Tomorrowland" loading="lazy" />
           </figure>
-          <figure class="logos__item" role="listitem">
-            <img src="assets/logo-placeholder.svg" alt="Partner Festival 3" />
+          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="2">
+            <img src="assets/partners/zwarte-cross.svg" alt="Zwarte Cross" loading="lazy" />
           </figure>
-          <figure class="logos__item" role="listitem">
-            <img src="assets/logo-placeholder.svg" alt="Partner Festival 4" />
+          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="3">
+            <img src="assets/partners/paaspop.svg" alt="Paaspop" loading="lazy" />
           </figure>
         </div>
       </div>
@@ -339,8 +370,11 @@
 
     <section class="section section--faq" id="faq">
       <div class="container">
-        <div class="section__intro">
-          <span class="section__eyebrow">FAQ</span>
+        <div class="section__intro" data-animate="fade-up">
+          <span class="section__eyebrow">
+            <i data-lucide="help-circle"></i>
+            FAQ
+          </span>
           <h2 class="section__title">Veelgestelde vragen</h2>
         </div>
         <div class="accordion" data-accordion>
@@ -391,12 +425,15 @@
     </section>
 
     <section class="section section--cta" id="contact">
-      <div class="container cta">
+      <div class="container cta" data-animate="fade-up">
         <div class="cta__content">
           <h2 class="cta__title">Klaar voor kortere rijen en blije bezoekers?</h2>
           <p class="cta__text">Plan een demo en ontdek hoe TapTime jouw volgende festival helpt stroomlijnen.</p>
         </div>
-        <a href="#" class="btn btn--primary">Plan een demo</a>
+        <a href="#" class="btn btn--primary">
+          <i data-lucide="calendar-check" aria-hidden="true"></i>
+          Plan een demo
+        </a>
       </div>
     </section>
   </main>
@@ -407,9 +444,18 @@
         <a href="#hero" class="footer__logo">TapTime</a>
         <p class="footer__text">Slim bestellen voor festivals en evenementen. Minder wachten, meer genieten.</p>
         <ul class="footer__contact">
-          <li><a href="tel:+31000000000">+31 (0)20 000 00 00</a></li>
-          <li><a href="mailto:info@taptime.nl">info@taptime.nl</a></li>
-          <li>Industrieweg 1, 1011 AB Amsterdam</li>
+          <li>
+            <i data-lucide="phone" aria-hidden="true"></i>
+            <a href="tel:+31000000000">+31 (0)20 000 00 00</a>
+          </li>
+          <li>
+            <i data-lucide="mail" aria-hidden="true"></i>
+            <a href="mailto:info@taptime.nl">info@taptime.nl</a>
+          </li>
+          <li>
+            <i data-lucide="map-pin" aria-hidden="true"></i>
+            Industrieweg 1, 1011 AB Amsterdam
+          </li>
         </ul>
       </div>
       <div class="footer__links">
@@ -450,6 +496,8 @@
     <p class="footer__meta">© <span data-year></span> TapTime. Alle rechten voorbehouden.</p>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@motionone/dom@10/dist/motion-one.umd.min.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

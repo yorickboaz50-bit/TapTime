@@ -1,0 +1,12 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="60" rx="14" fill="url(#paint0_linear)"/>
+  <circle cx="32" cy="30" r="18" stroke="white" stroke-width="4"/>
+  <path d="M32 18L37 30L32 42L27 30L32 18Z" fill="white"/>
+  <text x="60" y="36" fill="white" font-family="'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="700">Tomorrowland</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3C7D"/>
+      <stop offset="1" stop-color="#FFB661"/>
+    </linearGradient>
+  </defs>
+</svg>
