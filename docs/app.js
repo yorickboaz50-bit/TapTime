@@ -331,6 +331,65 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+const demoSteps = Array.from(document.querySelectorAll('[data-demo-step]'));
+const demoNavLinks = Array.from(document.querySelectorAll('[data-demo-nav-link]'));
+
+if (demoSteps.length > 0 && demoNavLinks.length > 0) {
+  const linkMap = new Map(
+    demoNavLinks
+      .map((link) => {
+        const hash = link.getAttribute('href');
+        if (!hash || !hash.startsWith('#')) {
+          return null;
+        }
+
+        return [hash.slice(1), link];
+      })
+      .filter((entry) => entry !== null)
+  );
+
+  const setActiveLink = (id) => {
+    linkMap.forEach((link, key) => {
+      if (key === id) {
+        link.classList.add('is-active');
+      } else {
+        link.classList.remove('is-active');
+      }
+    });
+  };
+
+  const updateActiveLink = () => {
+    const offset = (header?.offsetHeight ?? 0) + 32;
+    let currentId = demoSteps[0]?.id;
+
+    for (const step of demoSteps) {
+      const top = step.getBoundingClientRect().top;
+      if (top - offset <= 0) {
+        currentId = step.id;
+      } else {
+        break;
+      }
+    }
+
+    if (currentId) {
+      setActiveLink(currentId);
+    }
+  };
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  window.addEventListener('resize', updateActiveLink);
+  updateActiveLink();
+
+  demoNavLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const hash = link.getAttribute('href');
+      if (hash && hash.startsWith('#')) {
+        setActiveLink(hash.slice(1));
+      }
+    });
+  });
+}
+
 if (accordion) {
   accordion.addEventListener('click', (event) => {
     const trigger = event.target.closest('.accordion__trigger');
