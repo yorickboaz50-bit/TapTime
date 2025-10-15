@@ -108,6 +108,166 @@
       <p class="hero__note">TapTime is momenteel een concept. Deze website informeert over de mogelijkheden; live bestelfunctionaliteit volgt later.</p>
     </section>
 
+    <section id="live-demo" class="live-demo" aria-labelledby="live-demo-title">
+      <div class="container live-demo__inner" data-animate="fade-up">
+        <div class="live-demo__content">
+          <span class="live-demo__badge">Live demo</span>
+          <h2 id="live-demo-title">Ervaar de magie van TapTime in actie</h2>
+          <p class="live-demo__subtitle">
+            Bekijk hoe gasten in 10 seconden afrekenen — zonder app te downloaden.
+          </p>
+          <ul class="live-demo__highlights">
+            <li>Razendsnel bestellen op locatie</li>
+            <li>Heldere prijzen inclusief fooienopties</li>
+            <li>Bevestiging met uniek TAP-ordernummer</li>
+          </ul>
+        </div>
+        <div class="live-demo__phone" data-phone-demo>
+          <div class="phone-demo__frame" role="region" aria-label="TapTime checkout voorbeeld">
+            <div class="phone-demo__notch" aria-hidden="true"></div>
+            <header class="phone-demo__status">
+              <button type="button" class="phone-demo__back" data-phone-back aria-label="Ga een stap terug">
+                <i data-lucide="chevron-left" aria-hidden="true"></i>
+                <span>Terug</span>
+              </button>
+              <span class="phone-demo__step" data-phone-step>1/4</span>
+              <span class="phone-demo__bar" data-phone-bar>Geen bar geselecteerd</span>
+            </header>
+            <div class="phone-demo__viewport">
+              <section
+                class="phone-demo__screen is-active"
+                data-screen="choose-bar"
+                aria-labelledby="phone-demo-heading-choose"
+                aria-hidden="false"
+              >
+                <div class="phone-demo__body">
+                  <h3 id="phone-demo-heading-choose">Kies je bar</h3>
+                  <p class="phone-demo__description">Selecteer de bar waar je wilt ophalen.</p>
+                  <div class="phone-demo__options" role="list">
+                    <button type="button" class="phone-demo__option" data-bar="Main Bar" data-test="choose-bar">
+                      <span class="phone-demo__option-title">Main Bar</span>
+                      <span class="phone-demo__option-meta">Centraal plein</span>
+                    </button>
+                    <button type="button" class="phone-demo__option" data-bar="Food Court West" data-test="choose-bar">
+                      <span class="phone-demo__option-title">Food Court West</span>
+                      <span class="phone-demo__option-meta">Streetfood classics</span>
+                    </button>
+                    <button type="button" class="phone-demo__option" data-bar="Cocktail Corner" data-test="choose-bar">
+                      <span class="phone-demo__option-title">Cocktail Corner</span>
+                      <span class="phone-demo__option-meta">Mixology masters</span>
+                    </button>
+                    <button type="button" class="phone-demo__option" data-bar="Beer Garden" data-test="choose-bar">
+                      <span class="phone-demo__option-title">Beer Garden</span>
+                      <span class="phone-demo__option-meta">Speciaalbier uit fust</span>
+                    </button>
+                    <button type="button" class="phone-demo__option" data-bar="Vegan Bites" data-test="choose-bar">
+                      <span class="phone-demo__option-title">Vegan Bites</span>
+                      <span class="phone-demo__option-meta">Plant-based streetfood</span>
+                    </button>
+                    <button type="button" class="phone-demo__option" data-bar="Coffee &amp; Donuts" data-test="choose-bar">
+                      <span class="phone-demo__option-title">Coffee &amp; Donuts</span>
+                      <span class="phone-demo__option-meta">Zoete energieboost</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+              <section
+                class="phone-demo__screen"
+                data-screen="menu"
+                aria-labelledby="phone-demo-heading-menu"
+                aria-hidden="true"
+              >
+                <div class="phone-demo__body">
+                  <div class="phone-demo__tabs" role="tablist" aria-label="Menu categorie">
+                    <button type="button" role="tab" aria-selected="true" data-category="drank">Drank</button>
+                    <button type="button" role="tab" aria-selected="false" data-category="eten">Eten</button>
+                  </div>
+                  <div class="phone-demo__cart" data-test="cart" aria-live="polite"></div>
+                  <h3 id="phone-demo-heading-menu">Kies je drinken of eten</h3>
+                  <p class="phone-demo__description">Voeg items toe aan je bestelling.</p>
+                  <div class="phone-demo__menu" data-menu-list></div>
+                </div>
+                <footer class="phone-demo__footer">
+                  <div>
+                    <span class="phone-demo__total-label">Totaal</span>
+                    <strong class="phone-demo__total" data-phone-total>€ 0,00</strong>
+                  </div>
+                  <button type="button" class="phone-demo__cta" data-go-checkout data-test="go-checkout" disabled>
+                    Ga naar afrekenen
+                  </button>
+                </footer>
+              </section>
+              <section
+                class="phone-demo__screen"
+                data-screen="payment"
+                aria-labelledby="phone-demo-heading-payment"
+                aria-hidden="true"
+              >
+                <div class="phone-demo__body">
+                  <h3 id="phone-demo-heading-payment">Controleer en betaal</h3>
+                  <p class="phone-demo__description">Kies je fooi en betaalmethode.</p>
+                  <div class="phone-demo__summary" aria-live="polite"></div>
+                  <div class="phone-demo__tips" role="radiogroup" aria-label="Kies fooi percentage">
+                    <button type="button" role="radio" aria-checked="true" data-tip="0">0%</button>
+                    <button type="button" role="radio" aria-checked="false" data-tip="5">5%</button>
+                    <button type="button" role="radio" aria-checked="false" data-tip="10">10%</button>
+                    <button type="button" role="radio" aria-checked="false" data-tip="15">15%</button>
+                  </div>
+                  <div class="phone-demo__payments" role="radiogroup" aria-label="Betaalmethode">
+                    <button type="button" role="radio" aria-checked="true" data-method="iDEAL">iDEAL</button>
+                    <button type="button" role="radio" aria-checked="false" data-method="Apple Pay">Apple Pay</button>
+                    <button type="button" role="radio" aria-checked="false" data-method="Creditcard">Creditcard</button>
+                  </div>
+                </div>
+                <footer class="phone-demo__footer">
+                  <div>
+                    <span class="phone-demo__total-label">Totaal</span>
+                    <strong class="phone-demo__total" data-phone-total-pay>€ 0,00</strong>
+                  </div>
+                  <button type="button" class="phone-demo__cta" data-pay-now data-test="pay-now">
+                    Betaal nu
+                  </button>
+                </footer>
+              </section>
+              <section
+                class="phone-demo__screen"
+                data-screen="confirmation"
+                aria-labelledby="phone-demo-heading-confirm"
+                aria-hidden="true"
+              >
+                <div class="phone-demo__body phone-demo__body--center">
+                  <div class="phone-demo__check" aria-hidden="true">
+                    <i data-lucide="check"></i>
+                  </div>
+                  <h3 id="phone-demo-heading-confirm">Bestelling bevestigd!</h3>
+                  <p class="phone-demo__description">Laat dit scherm aan de bar zien om op te halen.</p>
+                  <dl class="phone-demo__details">
+                    <div>
+                      <dt>Ordernummer</dt>
+                      <dd data-order-id data-test="order-id">TAP-000000</dd>
+                    </div>
+                    <div>
+                      <dt>Bar</dt>
+                      <dd data-order-bar>—</dd>
+                    </div>
+                    <div>
+                      <dt>Totaal</dt>
+                      <dd data-order-total>€ 0,00</dd>
+                    </div>
+                  </dl>
+                </div>
+                <footer class="phone-demo__footer">
+                  <button type="button" class="phone-demo__cta" data-new-order>
+                    Nieuwe bestelling plaatsen
+                  </button>
+                </footer>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="hero-seo" data-animate="fade-up">
       <div class="container hero-seo__inner">
         <p>
