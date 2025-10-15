@@ -134,6 +134,149 @@ const setupMotionAnimations = () => {
   });
 };
 
+const setupFramerStaggerTimelines = () => {
+  if (prefersReducedMotion || !window.motion?.timeline) {
+    return;
+  }
+
+  const groups = document.querySelectorAll('[data-stagger-group]');
+  if (!groups.length) {
+    return;
+  }
+
+  const { timeline } = window.motion;
+
+  const cleanup = (items) => {
+    items.forEach((item) => {
+      item.style.opacity = '';
+      item.style.transform = '';
+      item.style.filter = '';
+      item.style.willChange = '';
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const group = entry.target;
+        const items = group.querySelectorAll('[data-stagger-item]');
+        if (!items.length) {
+          observer.unobserve(group);
+          return;
+        }
+
+        observer.unobserve(group);
+
+        const sequences = Array.from(items).map((item, index) => {
+          const groupDelay = Number.parseFloat(group.dataset.staggerDelay ?? '0') || 0;
+          const itemDelay = Number.parseFloat(item.dataset.staggerDelay ?? '0') || 0;
+          const at = groupDelay + itemDelay + index * 0.08;
+
+          return [
+            item,
+            {
+              opacity: [0, 1],
+              transform: ['translateY(24px)', 'translateY(0)'],
+              filter: ['blur(8px)', 'blur(0px)']
+            },
+            {
+              at,
+              duration: 0.6,
+              easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+            }
+          ];
+        });
+
+        const animation = timeline(sequences);
+
+        animation.finished
+          .then(() => {
+            cleanup(items);
+          })
+          .catch(() => {
+            cleanup(items);
+          });
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  groups.forEach((group) => {
+    const items = group.querySelectorAll('[data-stagger-item]');
+    if (!items.length) {
+      return;
+    }
+
+    items.forEach((item) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(24px)';
+      item.style.filter = 'blur(8px)';
+      item.style.willChange = 'opacity, transform, filter';
+    });
+
+    observer.observe(group);
+  });
+};
+
+const setupFramerMicroAnimations = () => {
+  if (prefersReducedMotion || !window.motion?.animate) {
+    return;
+  }
+
+  const { animate } = window.motion;
+
+  const heroVisual = document.querySelector('[data-hero-visual]');
+  if (heroVisual) {
+    heroVisual.style.willChange = 'transform';
+    animate(
+      heroVisual,
+      { transform: ['translateY(0px)', 'translateY(-12px)', 'translateY(0px)'] },
+      { duration: 12, easing: 'ease-in-out', repeat: Infinity }
+    );
+  }
+
+  const heroGlow = document.querySelector('[data-hero-glow]');
+  if (heroGlow) {
+    heroGlow.style.willChange = 'opacity, transform';
+    animate(
+      heroGlow,
+      { opacity: [0.22, 0.42, 0.22], transform: ['scale(0.95)', 'scale(1.05)', 'scale(0.95)'] },
+      { duration: 10, easing: 'ease-in-out', repeat: Infinity }
+    );
+  }
+
+  document.querySelectorAll('[data-float]').forEach((element, index) => {
+    element.style.willChange = 'transform';
+    animate(
+      element,
+      {
+        transform: ['translateY(0px)', 'translateY(-12px)', 'translateY(0px)'],
+        rotate: ['0deg', '2deg', '0deg']
+      },
+      {
+        duration: 6 + index * 0.4,
+        easing: 'ease-in-out',
+        repeat: Infinity,
+        delay: index * 0.2
+      }
+    );
+  });
+
+  const pulseElement = document.querySelector('[data-pulse]');
+  if (pulseElement) {
+    pulseElement.style.willChange = 'transform, opacity';
+    animate(
+      pulseElement,
+      { transform: ['scale(0.85)', 'scale(1.15)', 'scale(0.85)'], opacity: [0.45, 0, 0.45] },
+      { duration: 2.4, easing: 'ease-out', repeat: Infinity }
+    );
+  }
+};
+
 const smoothScrollTo = (target) => {
   const headerOffset = header ? header.offsetHeight + 16 : 0;
   const elementPosition = target.getBoundingClientRect().top + window.scrollY;
@@ -215,6 +358,8 @@ if (demoButton) {
 const initEnhancements = () => {
   initializeIcons();
   setupMotionAnimations();
+  setupFramerStaggerTimelines();
+  setupFramerMicroAnimations();
 };
 
 if (document.readyState === 'loading') {
