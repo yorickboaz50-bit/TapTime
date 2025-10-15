@@ -29,7 +29,7 @@
       <nav class="header__nav" id="primary-navigation" aria-label="Hoofdmenu">
         <ul class="header__list">
           <li><a href="#product" class="header__link">Product</a></li>
-          <li><a href="#demo" class="header__link">Demo</a></li>
+          <li><a href="demo.html" class="header__link">Bekijk demo</a></li>
           <li><a href="#bezoekers" class="header__link">Voor bezoekers</a></li>
           <li><a href="#organisatoren" class="header__link">Voor organisatoren</a></li>
           <li><a href="#werking" class="header__link">Werking</a></li>
@@ -51,7 +51,7 @@
           <h1 class="hero__title">Bestel, betaal en haal op – zonder wachtrij.</h1>
           <p class="hero__subtitle">TapTime is de slimme webapp waarmee festivalbezoekers eten en drinken bestellen zonder te wachten.</p>
           <div class="hero__actions">
-            <a href="#demo" class="btn btn--primary btn--pulse" data-demo-button>
+            <a href="demo.html" class="btn btn--primary btn--pulse" data-demo-button>
               <span class="btn__pulse" data-pulse aria-hidden="true"></span>
               <i data-lucide="play" aria-hidden="true"></i>
               👉 Probeer de demo
@@ -515,53 +515,47 @@
             <i data-lucide="sparkles" aria-hidden="true"></i>
             Live demo
           </span>
-          <h2 class="section__title">Ervaar TapTime vanuit je browser</h2>
+          <h2 class="section__title">Ervaar TapTime op een volledig scherm</h2>
           <p class="section__subtitle">
-            Stap door een gesimuleerde bestelervaring en ontdek hoe TapTime wachtrijen verkort, betalingen versnelt en crew realtime inzicht geeft.
+            Open de interactieve demo in een losse pagina en beleef hoe bezoekers bestellen, betalen en hun drankjes ophalen vanaf hun telefoon.
           </p>
         </div>
-        <div class="demo__grid" data-demo-root>
-          <section class="demo__panel demo__panel--bars" aria-labelledby="demo-bars-heading">
-            <div class="demo__panel-header">
-              <h3 id="demo-bars-heading">Kies een bar</h3>
-              <p>Bekijk wachttijden en selecteer waar je wilt bestellen.</p>
-            </div>
-            <div class="demo__bar-list" data-demo-bars role="list"></div>
-          </section>
-          <section class="demo__panel demo__panel--menu" aria-labelledby="demo-menu-heading">
-            <div class="demo__panel-header">
-              <h3 id="demo-menu-heading" data-demo-bar-name>Selecteer een bar</h3>
-              <p data-demo-bar-meta>Je ziet hier het live menu inclusief wachttijd en specials.</p>
-            </div>
-            <div class="demo__empty" data-demo-empty>
-              <p>Kies links een bar om het menu en acties te bekijken.</p>
-            </div>
-            <div class="demo__menu" data-demo-menu hidden></div>
-          </section>
-          <section class="demo__panel demo__panel--order" aria-labelledby="demo-order-heading">
-            <div class="demo__panel-header">
-              <h3 id="demo-order-heading">Je demo-bestelling</h3>
-              <p data-demo-order-meta>Vul je mandje en ontdek hoe snel een order doorloopt.</p>
-            </div>
-            <div class="demo__order" data-demo-cart>
-              <p class="demo__empty">Nog niets geselecteerd. Voeg producten toe uit het menu.</p>
-            </div>
-            <div class="demo__status" data-demo-status hidden>
-              <div class="demo__status-header">
-                <h4>Status bestelling <span data-demo-order-code></span></h4>
-                <p data-demo-status-subtitle></p>
+        <div class="demo-preview" data-animate="fade-up">
+          <div class="demo-preview__content">
+            <h3>Zie de flow zoals je bezoekers die ervaren</h3>
+            <p>
+              Switch tussen festivalbars, vul je mandje en volg live de wachtrij. De demo geeft je een gevoel bij het mobiele bestelproces en het orderboard voor de crew.
+            </p>
+            <ul class="demo-preview__list">
+              <li>Realtime wachttijden en highlights per bar.</li>
+              <li>Een mobiel menu met upsells en snelle herbestellingen.</li>
+              <li>Statusupdates die bezoekers stap voor stap meenemen.</li>
+            </ul>
+            <a href="demo.html" class="btn btn--primary">Bekijk de interactieve demo</a>
+          </div>
+          <div class="demo-preview__visual" aria-hidden="true">
+            <div class="phone-frame">
+              <span class="phone-frame__notch"></span>
+              <div class="phone-frame__inner">
+                <div class="phone-frame__screen phone-frame__screen--preview">
+                  <div class="demo-preview__glow"></div>
+                  <div class="demo-preview__card demo-preview__card--header">
+                    <span class="demo-preview__pill">TapTime Main Stage</span>
+                    <p>Wachttijd ± 2 min</p>
+                  </div>
+                  <div class="demo-preview__card">
+                    <h4>Ronde tafel</h4>
+                    <p>Speciaalbieren, cocktails en snelle bites voor tijdens de set.</p>
+                  </div>
+                  <div class="demo-preview__card demo-preview__card--queue">
+                    <span class="demo-preview__queue-label">Live orderboard</span>
+                    <strong>#241 klaarmaken</strong>
+                    <p>Jij bent bijna aan de beurt 🎉</p>
+                  </div>
+                </div>
               </div>
-              <ol class="demo__status-list" data-demo-status-list></ol>
-              <p class="demo__status-message" data-demo-status-message></p>
             </div>
-            <div class="demo__queue" data-demo-queue hidden>
-              <div class="demo__queue-header">
-                <h4>Live orderboard</h4>
-                <p data-demo-queue-bar></p>
-              </div>
-              <ul class="demo__queue-list" data-demo-queue-list></ul>
-            </div>
-          </section>
+          </div>
         </div>
       </div>
     </section>

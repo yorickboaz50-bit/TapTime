@@ -843,6 +843,152 @@ main {
   background: linear-gradient(180deg, rgba(91, 108, 255, 0.06) 0%, rgba(255, 255, 255, 0) 75%);
 }
 
+.demo-preview {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.demo-preview__content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.demo-preview__content h3 {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+.demo-preview__content p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+.demo-preview__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+}
+
+.demo-preview__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.phone-frame {
+  position: relative;
+  width: min(100%, 360px);
+  padding: 1.75rem 1.25rem 2.25rem;
+  background: linear-gradient(160deg, rgba(26, 31, 71, 0.92) 0%, rgba(91, 108, 255, 0.88) 65%, rgba(143, 216, 255, 0.75) 100%);
+  border-radius: 2.5rem;
+  box-shadow: 0 30px 60px rgba(18, 24, 54, 0.28);
+}
+
+.phone-frame__notch {
+  display: block;
+  width: 120px;
+  height: 20px;
+  background: rgba(5, 12, 35, 0.95);
+  border-radius: 0 0 18px 18px;
+  margin: 0 auto 1.25rem;
+}
+
+.phone-frame__inner {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 1.75rem;
+  padding: 1.25rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.phone-frame__screen {
+  background: var(--color-surface);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-frame__screen--preview {
+  padding: 1.75rem 1.35rem;
+  background: linear-gradient(180deg, rgba(244, 247, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+  gap: 1.25rem;
+}
+
+.phone-frame__screen--app {
+  padding: 1.4rem 1.25rem 1.6rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 247, 255, 0.96) 100%);
+}
+
+.demo-preview__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 10%, rgba(91, 108, 255, 0.25), transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(0, 194, 168, 0.2), transparent 55%);
+  pointer-events: none;
+}
+
+.demo-preview__card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 15px 35px rgba(18, 24, 54, 0.12);
+}
+
+.demo-preview__card h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.demo-preview__card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.demo-preview__card--queue {
+  background: linear-gradient(160deg, rgba(91, 108, 255, 0.9) 0%, rgba(143, 216, 255, 0.85) 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.demo-preview__card--queue p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.demo-preview__card--header {
+  text-align: center;
+}
+
+.demo-preview__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(91, 108, 255, 0.12);
+  color: var(--color-primary);
+}
+
+.demo-preview__queue-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .demo__grid {
   display: grid;
   gap: 1.75rem;
@@ -1782,4 +1928,190 @@ main {
 .flow__step p {
   margin: 0;
   color: var(--color-text-muted);
+}
+
+.page--demo {
+  background: linear-gradient(180deg, rgba(244, 247, 255, 0.6) 0%, rgba(255, 255, 255, 1) 35%);
+}
+
+.page--demo .site-header {
+  background-color: transparent;
+}
+
+.page--demo .hero {
+  padding-top: 6rem;
+}
+
+.demo-hero {
+  padding: 6rem 0 3rem;
+}
+
+.demo-hero .hero__content {
+  max-width: 540px;
+}
+
+.demo-hero .hero__actions {
+  flex-wrap: wrap;
+}
+
+.demo-experience {
+  padding: 0 0 6rem;
+}
+
+.demo-experience__inner {
+  display: grid;
+  gap: 3.5rem;
+  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.demo-experience__copy {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.demo-experience__copy p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+.demo-experience__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.demo-experience__phone {
+  display: flex;
+  justify-content: center;
+}
+
+.demo-phone {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+}
+
+.demo-phone__header {
+  display: grid;
+  gap: 0.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(18, 24, 54, 0.08);
+}
+
+.demo-phone__header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.demo-phone__header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.demo-phone__body {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  gap: 1.25rem;
+  padding-right: 0.35rem;
+}
+
+.demo-phone__section {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.demo-phone__section h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.demo-phone__section--order {
+  border-top: 1px solid rgba(18, 24, 54, 0.08);
+  padding-top: 1rem;
+}
+
+.demo-phone .demo__bar-card {
+  padding: 1rem 1.15rem;
+}
+
+.demo-phone .demo__category {
+  gap: 0.75rem;
+}
+
+.demo-phone .demo__category-title {
+  font-size: 0.95rem;
+}
+
+.demo-phone .demo__item {
+  gap: 0.75rem;
+}
+
+.demo-phone .demo__summary {
+  padding: 0.9rem 1rem;
+}
+
+.demo-phone__status,
+.demo-phone__queue {
+  border-top: 1px solid rgba(18, 24, 54, 0.08);
+  padding-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.demo-phone__status h4,
+.demo-phone__queue h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.demo-phone__queue-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.demo-phone__queue .demo__queue-item {
+  padding: 0.75rem 1rem;
+}
+
+.demo-page-cta {
+  padding: 4rem 0 6rem;
+}
+
+.demo-page-cta .cta-banner__inner {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.demo-page-cta .btn {
+  align-self: stretch;
+}
+
+@media (max-width: 768px) {
+  .demo-preview {
+    gap: 2rem;
+  }
+
+  .phone-frame {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .phone-frame__inner {
+    padding: 1rem;
+  }
+
+  .phone-frame__screen {
+    min-height: 480px;
+  }
+
+  .demo-experience__inner {
+    gap: 2.5rem;
+  }
 }
