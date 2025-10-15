@@ -7,9 +7,23 @@ body.ios-demo {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #eef1f7 0%, #f5f7fb 40%, #f2f2f7 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
   color: #0a0a0a;
+  background-color: var(--color-background, #f8f9ff);
+  background-image: radial-gradient(
+      circle at 12% -10%,
+      rgba(91, 108, 255, 0.2),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(0, 194, 168, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(180deg, rgba(91, 108, 255, 0.08) 0%, rgba(255, 255, 255, 0) 55%);
+  background-repeat: no-repeat;
+  background-size: 900px 900px, 780px 780px, auto;
+  background-position: -180px -160px, calc(100% + 120px) -80px, top;
 }
 
 .ios-demo__topbar {
@@ -66,6 +80,11 @@ body.ios-demo {
 }
 
 @media (max-width: 768px) {
+  body.ios-demo {
+    background-size: 520px 520px, 460px 460px, auto;
+    background-position: -120px -120px, calc(100% + 60px) -40px, top;
+  }
+
   .ios-demo__topbar {
     padding-block: 12px;
   }
