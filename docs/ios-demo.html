@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TapTime | iOS Demo</title>
+  <meta name="theme-color" content="#f2f2f7" />
+  <meta name="description" content="Ervaar de TapTime bestelervaring in een native iOS stijl." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ios-demo.css" />
+</head>
+<body class="ios-demo">
+  <a class="ios-demo__back-link" href="index.html" aria-label="Terug naar TapTime.nl">TapTime</a>
+  <div class="ios-demo__frame">
+    <div class="ios-demo__device" role="region" aria-label="TapTime bestelervaring">
+      <header class="ios-demo__status" aria-hidden="true">
+        <span class="ios-demo__time" data-ios-time>9:41</span>
+        <div class="ios-demo__status-icons">
+          <span class="ios-demo__status-signal"></span>
+          <span class="ios-demo__status-wifi"></span>
+          <span class="ios-demo__status-battery"></span>
+        </div>
+      </header>
+
+      <div class="ios-demo__app" data-phone-app>
+        <header class="phone-app__header">
+          <button class="phone-app__back" type="button" aria-label="Ga terug" data-phone-back hidden>
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path
+                d="M10.5 3.5 6 8l4.5 4.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div class="phone-app__headings">
+            <p class="phone-app__eyebrow" data-phone-step>Stap 1 van 3</p>
+            <h1 class="phone-app__title" data-phone-title>Kies je bar</h1>
+            <p class="phone-app__subtitle" data-phone-subtitle>Check wachttijd en specials</p>
+          </div>
+          <span class="phone-app__badge" data-phone-badge hidden></span>
+        </header>
+
+        <main class="phone-app__body">
+          <section class="phone-app__view is-active" data-phone-view="bars">
+            <ul class="phone-app__list" data-phone-bars></ul>
+          </section>
+
+          <section class="phone-app__view" data-phone-view="menu">
+            <div class="phone-app__menu">
+              <div class="phone-app__menu-empty" data-phone-menu-empty>
+                <p>Selecteer een bar om het menu te bekijken.</p>
+              </div>
+              <div class="phone-app__menu-content" data-phone-menu hidden></div>
+            </div>
+            <div class="phone-app__summary" data-phone-cart hidden>
+              <div class="phone-app__summary-header">
+                <h2>Mandje</h2>
+                <button class="phone-app__clear" type="button" data-phone-clear>Wis</button>
+              </div>
+              <ul class="phone-app__cart-items" data-phone-cart-items></ul>
+              <div class="phone-app__summary-footer">
+                <div>
+                  <p class="phone-app__summary-label">Totaal</p>
+                  <p class="phone-app__summary-meta">TapTime Pay</p>
+                </div>
+                <strong class="phone-app__summary-total" data-phone-total>€0,00</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="phone-app__view" data-phone-view="status">
+            <div class="phone-app__status">
+              <p class="phone-app__order" data-phone-order></p>
+              <ul class="phone-app__order-list" data-phone-order-items></ul>
+              <p class="phone-app__ready" data-phone-ready></p>
+              <div class="phone-app__review">
+                <p>Hoe was je ervaring?</p>
+                <div class="phone-app__rating" data-phone-rating></div>
+                <p class="phone-app__thanks" data-phone-thanks hidden>Bedankt voor je review! 🎉</p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="phone-app__footer">
+          <button class="phone-app__action" type="button" data-phone-next disabled>Ga verder</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/@motionone/dom"></script>
+  <script src="app.js"></script>
+  <script>
+    const timeEl = document.querySelector('[data-ios-time]');
+    const updateIosTime = () => {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      timeEl.textContent = `${hours}:${minutes}`;
+    };
+    updateIosTime();
+    setInterval(updateIosTime, 60000);
+  </script>
+</body>
+</html>
