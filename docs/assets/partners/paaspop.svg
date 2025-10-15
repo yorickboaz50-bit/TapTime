@@ -1,0 +1,13 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="60" rx="14" fill="url(#paint0_linear)"/>
+  <path d="M18 30C18 22.268 24.268 16 32 16C39.732 16 46 22.268 46 30C46 37.732 39.732 44 32 44C24.268 44 18 37.732 18 30Z" stroke="#0E2F2F" stroke-width="4" fill="rgba(255,255,255,0.85)"/>
+  <path d="M32 20V40" stroke="#0E2F2F" stroke-width="4"/>
+  <path d="M22 30H42" stroke="#0E2F2F" stroke-width="4"/>
+  <text x="60" y="36" fill="#0E2F2F" font-family="'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="700">Paaspop</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8DF0FF"/>
+      <stop offset="1" stop-color="#4BC9B5"/>
+    </linearGradient>
+  </defs>
+</svg>
