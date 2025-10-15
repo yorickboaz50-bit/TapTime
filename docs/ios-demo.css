@@ -9,86 +9,26 @@ body.ios-demo {
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
   color: #0a0a0a;
-  background-color: var(--color-background, #f8f9ff);
-  background-image: radial-gradient(
-      circle at 12% -10%,
-      rgba(91, 108, 255, 0.2),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 85% 0%,
-      rgba(0, 194, 168, 0.18),
-      transparent 60%
-    ),
-    linear-gradient(180deg, rgba(91, 108, 255, 0.08) 0%, rgba(255, 255, 255, 0) 55%);
-  background-repeat: no-repeat;
-  background-size: 900px 900px, 780px 780px, auto;
-  background-position: -180px -160px, calc(100% + 120px) -80px, top;
-}
-
-.ios-demo__topbar {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px clamp(16px, 4vw, 32px);
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.ios-demo__back-link {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #1d4ed8;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.ios-demo__back-link::before {
-  content: '\2190';
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.ios-demo__back-link:hover,
-.ios-demo__back-link:focus-visible {
-  color: #1e3a8a;
+  background-color: #f2f2f7;
 }
 
 .ios-demo__shell {
   flex: 1;
   display: flex;
-  padding: clamp(16px, 4vw, 40px);
+  width: 100%;
 }
 
 .ios-demo__app {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: clamp(16px, 4vw, 24px);
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
-  backdrop-filter: blur(8px);
+  background: #fff;
   display: flex;
   flex-direction: column;
-  width: min(100%, 960px);
-  margin: 0 auto;
+  flex: 1;
+  width: 100%;
+  min-height: 100vh;
   overflow: hidden;
-  min-height: 0;
 }
 
 @media (max-width: 768px) {
-  body.ios-demo {
-    background-size: 520px 520px, 460px 460px, auto;
-    background-position: -120px -120px, calc(100% + 60px) -40px, top;
-  }
-
-  .ios-demo__topbar {
-    padding-block: 12px;
-  }
-
   .ios-demo__app {
     border-radius: 0;
     box-shadow: none;
