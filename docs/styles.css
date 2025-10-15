@@ -188,6 +188,27 @@ i[data-lucide] {
   }
 }
 
+@media (max-width: 640px) {
+  .hero__badge {
+    position: static;
+    margin: 1.25rem auto 0;
+  }
+
+  .hero__badge--secondary {
+    margin-top: 0.75rem;
+  }
+
+  .hero__visual {
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn__pulse {
+    display: none;
+  }
+}
+
 main {
   overflow: hidden;
 }
@@ -260,6 +281,22 @@ main {
   height: 1.1rem;
 }
 
+.btn--pulse {
+  position: relative;
+  isolation: isolate;
+}
+
+.btn__pulse {
+  position: absolute;
+  inset: -0.35rem;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, rgba(91, 108, 255, 0.45), rgba(91, 108, 255, 0) 70%);
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+  z-index: -1;
+}
+
 .btn--primary {
   background-color: var(--color-primary);
   color: #fff;
@@ -311,6 +348,20 @@ main {
 
 .hero__visual {
   position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.hero__glow {
+  position: absolute;
+  inset: -12%;
+  border-radius: clamp(22px, 6vw, 40px);
+  background: radial-gradient(circle at 30% 20%, rgba(91, 108, 255, 0.35), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(0, 194, 168, 0.25), transparent 65%);
+  opacity: 0.25;
+  filter: blur(0);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero__photo {
@@ -320,6 +371,7 @@ main {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   position: relative;
+  z-index: 1;
 }
 
 .hero__photo::after {
@@ -335,6 +387,59 @@ main {
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.hero__badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(91, 108, 255, 0.12);
+  backdrop-filter: blur(12px);
+  z-index: 2;
+}
+
+.hero__badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(91, 108, 255, 0.18), rgba(91, 108, 255, 0));
+  color: var(--color-primary);
+}
+
+.hero__badge-text {
+  display: grid;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  color: var(--color-text-muted);
+}
+
+.hero__badge-text strong {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.hero__badge {
+  bottom: 10%;
+  left: -5%;
+}
+
+.hero__badge--secondary {
+  top: 8%;
+  right: -4%;
+  left: auto;
+}
+
+.hero__badge--secondary .hero__badge-icon {
+  background: linear-gradient(135deg, rgba(0, 194, 168, 0.2), rgba(0, 194, 168, 0));
+  color: var(--color-accent);
 }
 
 .hero__note {

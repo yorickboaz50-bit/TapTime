@@ -50,7 +50,8 @@
           <h1 class="hero__title">Bestel. Betaal. Haal op. Zónder wachtrij.</h1>
           <p class="hero__subtitle">TapTime is het webplatform voor festivals en evenementen waar bezoekers drankjes vooraf bestellen, veilig betalen en razendsnel ophalen bij de bar die het beste uitkomt.</p>
           <div class="hero__actions">
-            <a href="#contact" class="btn btn--primary" data-demo-button>
+            <a href="#contact" class="btn btn--primary btn--pulse" data-demo-button>
+              <span class="btn__pulse" data-pulse aria-hidden="true"></span>
               <i data-lucide="play" aria-hidden="true"></i>
               Demo aanvragen
             </a>
@@ -59,29 +60,48 @@
               Download infosheet (PDF)
             </a>
           </div>
-          <ul class="hero__stats" aria-label="Voorbeeld wachttijden">
-            <li class="hero__stat" data-animate="fade-up" data-animate-delay="0.1">
+          <ul class="hero__stats" aria-label="Voorbeeld wachttijden" data-stagger-group="hero">
+            <li class="hero__stat" data-stagger-item>
               <i data-lucide="signal" aria-hidden="true"></i>
               <span class="hero__stat-text">Main Stage Bar · Rustig</span>
             </li>
-            <li class="hero__stat" data-animate="fade-up" data-animate-delay="0.2">
+            <li class="hero__stat" data-stagger-item>
               <i data-lucide="flame" aria-hidden="true"></i>
               <span class="hero__stat-text">Craft Beer Corner · Druk</span>
             </li>
-            <li class="hero__stat" data-animate="fade-up" data-animate-delay="0.3">
+            <li class="hero__stat" data-stagger-item>
               <i data-lucide="waves" aria-hidden="true"></i>
               <span class="hero__stat-text">Cocktail Lab · Doorstroming goed</span>
             </li>
           </ul>
         </div>
         <div class="hero__visual" data-animate="fade-left">
-          <figure class="hero__photo">
+          <div class="hero__glow" data-hero-glow aria-hidden="true"></div>
+          <figure class="hero__photo" data-hero-visual>
             <img
               src="https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=1200&q=80"
               alt="Festivalbezoekers proosten met bier tijdens zonsondergang"
               loading="lazy"
             />
           </figure>
+          <div class="hero__badge" data-float>
+            <span class="hero__badge-icon" aria-hidden="true">
+              <i data-lucide="sparkles"></i>
+            </span>
+            <div class="hero__badge-text">
+              <span>Realtime inzicht</span>
+              <strong>Live druktemeter</strong>
+            </div>
+          </div>
+          <div class="hero__badge hero__badge--secondary" data-float>
+            <span class="hero__badge-icon" aria-hidden="true">
+              <i data-lucide="timer"></i>
+            </span>
+            <div class="hero__badge-text">
+              <span>Gem. ophaaltijd</span>
+              <strong>2 minuten</strong>
+            </div>
+          </div>
         </div>
       </div>
       <p class="hero__note">TapTime is momenteel een concept. Deze website informeert over de mogelijkheden; live bestelfunctionaliteit volgt later.</p>
@@ -97,43 +117,43 @@
           <h2 class="section__title">Verkort de rij, verhoog de beleving</h2>
           <p class="section__subtitle">Een digitale bestelstraat die aansluit bij hoe bezoekers zich bewegen over het terrein en hoe bars werken.</p>
         </div>
-        <div class="grid grid--benefits" role="list">
-          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="0">
+        <div class="grid grid--benefits" role="list" data-stagger-group="benefits">
+          <article class="card card--benefit" role="listitem" data-stagger-item>
             <div class="card__icon" aria-hidden="true">
               <i data-lucide="clock-3"></i>
             </div>
             <h3 class="card__title">Nooit meer lang wachten</h3>
             <p class="card__text">Bezoekers bestellen onderweg en pikken hun drankjes op zodra ze arriveren.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="1">
+          <article class="card card--benefit" role="listitem" data-stagger-item>
             <div class="card__icon" aria-hidden="true">
               <i data-lucide="shield-check"></i>
             </div>
             <h3 class="card__title">Betaal veilig</h3>
             <p class="card__text">Ondersteunt iDEAL, Apple Pay en creditcard. Geen losse munten of bonnen meer.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="2">
+          <article class="card card--benefit" role="listitem" data-stagger-item>
             <div class="card__icon" aria-hidden="true">
               <i data-lucide="navigation-2"></i>
             </div>
             <h3 class="card__title">Kies je bar</h3>
             <p class="card__text">Laat bezoekers zelf bepalen waar ze ophalen, inclusief realtime druktemeter.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="3">
+          <article class="card card--benefit" role="listitem" data-stagger-item>
             <div class="card__icon" aria-hidden="true">
               <i data-lucide="users"></i>
             </div>
             <h3 class="card__title">Minder rijen</h3>
             <p class="card__text">Stuur de drukte en spreid pieken door bezoekers vooraf te laten plannen.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="4">
+          <article class="card card--benefit" role="listitem" data-stagger-item>
             <div class="card__icon" aria-hidden="true">
               <i data-lucide="trending-up"></i>
             </div>
             <h3 class="card__title">Meer omzet</h3>
             <p class="card__text">Voorkom afhakers: bezoekers bestellen terwijl ze nog zin hebben in een drankje.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-animate="fade-up" data-animate-order="5">
+          <article class="card card--benefit" role="listitem" data-stagger-item>
             <div class="card__icon" aria-hidden="true">
               <i data-lucide="radar"></i>
             </div>
