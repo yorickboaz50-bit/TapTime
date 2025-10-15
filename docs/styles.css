@@ -305,11 +305,28 @@ main {
   position: relative;
 }
 
-.hero__image {
-  max-width: 480px;
-  width: 100%;
+.hero__photo {
+  max-width: 500px;
+  margin-inline: auto;
   border-radius: var(--radius-lg);
+  overflow: hidden;
   box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.hero__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 17, 36, 0) 30%, rgba(15, 17, 36, 0.25) 100%);
+  pointer-events: none;
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .hero__note {
@@ -395,6 +412,72 @@ main {
 .split {
   display: grid;
   gap: 3rem;
+}
+
+.split__photo {
+  margin: 2rem 0 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.split__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 17, 36, 0) 40%, rgba(15, 17, 36, 0.35) 100%);
+  pointer-events: none;
+}
+
+.split__photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.section--gallery {
+  background: linear-gradient(180deg, rgba(91, 108, 255, 0.07) 0%, rgba(0, 194, 168, 0.04) 100%);
+}
+
+.gallery {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.gallery__item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 220px;
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 17, 36, 0) 50%, rgba(15, 17, 36, 0.55) 100%);
+  pointer-events: none;
+}
+
+.gallery__caption {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.4;
+  text-shadow: 0 8px 20px rgba(15, 17, 36, 0.45);
 }
 
 .steps {
@@ -660,6 +743,10 @@ main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .hero__photo {
+    max-width: none;
+  }
+
   .hero__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -671,6 +758,10 @@ main {
   .split {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2.5rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .timeline {
@@ -689,6 +780,10 @@ main {
 
   .grid--benefits {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .timeline {
