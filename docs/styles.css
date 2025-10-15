@@ -1343,6 +1343,12 @@ main {
   color: var(--color-text-muted);
 }
 
+.demo__status-code {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .demo__queue {
   border-radius: var(--radius-md);
   border: 1px solid rgba(91, 108, 255, 0.14);

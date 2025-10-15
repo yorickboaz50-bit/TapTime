@@ -41,6 +41,24 @@
             Laat in enkele minuten zien hoe bezoekers bestellen, betalen en hun drankjes ophalen zonder wachtrij. Gebruik dit
             compacte demodashboard in pitches, salescalls en op evenementen.
           </p>
+          <div class="demo-hero__shortcuts">
+            <a class="demo-hero__shortcut" href="#demo-step-bar">
+              <span>1</span>
+              Kies je bar
+            </a>
+            <a class="demo-hero__shortcut" href="#demo-step-menu">
+              <span>2</span>
+              Selecteer producten
+            </a>
+            <a class="demo-hero__shortcut" href="#demo-step-pay">
+              <span>3</span>
+              Bestel &amp; betaal
+            </a>
+            <a class="demo-hero__shortcut" href="#demo-step-code">
+              <span>4</span>
+              Toon ordercode
+            </a>
+          </div>
           <ul class="demo-hero__highlights" aria-label="Belangrijkste voordelen">
             <li>
               <span class="demo-check" aria-hidden="true">
@@ -149,6 +167,126 @@
         <a href="index.html#contact" class="demo-hero__cta-button">Start 100% gratis</a>
       </div>
     </section>
+
+    <section class="demo-flow" aria-labelledby="demo-flow-heading">
+      <div class="container demo-flow__inner">
+        <aside class="demo-flow__sidebar">
+          <div>
+            <h2 id="demo-flow-heading">Volg elke stap van de bezoekersflow</h2>
+            <p>Gebruik het interactieve dashboard om te ervaren hoe snel bestellen, betalen en afhalen gaat met TapTime.</p>
+          </div>
+          <nav aria-label="Stappen in de TapTime demo">
+            <ul class="demo-flow__nav">
+              <li><a href="#demo-step-bar" data-demo-nav-link>1. Kies je bar</a></li>
+              <li><a href="#demo-step-menu" data-demo-nav-link>2. Selecteer producten</a></li>
+              <li><a href="#demo-step-pay" data-demo-nav-link>3. Bestel &amp; betaal</a></li>
+              <li><a href="#demo-step-code" data-demo-nav-link>4. Ontvang je ordercode</a></li>
+            </ul>
+          </nav>
+          <div class="demo-flow__summary">
+            <h3>Tip voor je pitch</h3>
+            <p>Laat zien hoe wachttijden dalen terwijl de crew orders realtime verwerkt. Alles gebeurt binnen één intuïtief scherm.</p>
+          </div>
+        </aside>
+
+        <div class="demo-flow__content">
+          <article class="demo-step" id="demo-step-bar" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 1</span>
+              <h3>Kies de bar met de kortste wachtrij</h3>
+              <p>Selecteer een bar om meteen wachttijd, highlights en crewbezetting te zien. Zo laat je bezoekers slim kiezen.</p>
+            </header>
+            <ul class="demo-step__highlights">
+              <li>Realtime crowd level per bar.</li>
+              <li>Gemiddelde wachttijd en actieve crewleden.</li>
+              <li>Specials die je kunt uitlichten tijdens de demo.</li>
+            </ul>
+          </article>
+
+          <article class="demo-step" id="demo-step-menu" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 2</span>
+              <h3>Vul het mandje met producten</h3>
+              <p>Blader door het menu van de gekozen bar en voeg eenvoudig drankjes of bites toe. Alles is meteen zichtbaar in het mandje.</p>
+            </header>
+            <div class="demo__grid" data-demo-root>
+              <section class="demo__panel">
+                <div class="demo__panel-header">
+                  <h3>1. Kies een bar</h3>
+                  <p>Selecteer de bar die je wilt laten zien tijdens je demo.</p>
+                </div>
+                <div class="demo__bar-list" data-demo-bars role="list"></div>
+              </section>
+
+              <section class="demo__panel">
+                <div class="demo__panel-header">
+                  <h3 data-demo-bar-name>Selecteer een bar</h3>
+                  <p data-demo-bar-meta>Je ziet hier het live menu inclusief wachttijd en specials.</p>
+                </div>
+                <div data-demo-empty>
+                  <p class="demo__empty">Selecteer eerst een bar om het menu te bekijken.</p>
+                </div>
+                <div class="demo__menu" data-demo-menu hidden></div>
+              </section>
+
+              <section class="demo__panel demo__panel--order">
+                <div class="demo__panel-header">
+                  <h3>3. Mandje &amp; status</h3>
+                  <p data-demo-order-meta>Vul je mandje en ontdek hoe snel een order doorloopt.</p>
+                </div>
+                <div class="demo__order">
+                  <div data-demo-cart></div>
+                  <div class="demo__status" data-demo-status hidden>
+                    <div class="demo__status-header">
+                      <h4>Orderstatus</h4>
+                      <p data-demo-status-subtitle></p>
+                    </div>
+                    <strong class="demo__status-code" data-demo-order-code></strong>
+                    <ul class="demo__status-list" data-demo-status-list></ul>
+                    <p class="demo__status-message" data-demo-status-message></p>
+                  </div>
+                  <div class="demo__queue" data-demo-queue hidden>
+                    <div class="demo__queue-header">
+                      <h4>Live wachtrij</h4>
+                      <p data-demo-queue-bar></p>
+                    </div>
+                    <ul class="demo__queue-list" data-demo-queue-list></ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </article>
+
+          <article class="demo-step" id="demo-step-pay" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 3</span>
+              <h3>Bestel en betaal in één tap</h3>
+              <p>Laat zien hoe bezoekers hun bestelling afronden. Na het plaatsen schuift de order automatisch in de wachtrij en krijgt de crew een melding.</p>
+            </header>
+            <ul class="demo-step__highlights">
+              <li>Bestelknop wordt actief zodra je een bar én producten kiest.</li>
+              <li>De wachtrij toont live welke orders worden voorbereid.</li>
+              <li>Statusupdates houden bezoekers en crew synchroon.</li>
+            </ul>
+          </article>
+
+          <article class="demo-step" id="demo-step-code" data-demo-step>
+            <header>
+              <span class="demo-step__label">Stap 4</span>
+              <h3>De ordercode verschijnt automatisch</h3>
+              <p>Zodra de bestelling klaarstaat, toont TapTime de afhaalcode. Bezoekers lopen direct naar de pick-up counter zonder opnieuw in de rij te staan.</p>
+            </header>
+            <ul class="demo-step__highlights">
+              <li>Volg de status van je eigen demo-order in het statusblok.</li>
+              <li>Klaar? De wachtrij markeert jouw order in het groen.</li>
+              <li>Gebruik de code tijdens salesgesprekken als bewijs van snelheid.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
   </main>
 
   <footer class="demo-footer">
@@ -162,6 +300,8 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@motionone/dom@10/dist/motion-one.umd.min.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>
