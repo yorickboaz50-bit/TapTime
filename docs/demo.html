@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TapTime | Live demo bestellen en ophalen zonder wachtrij</title>
+  <meta name="description" content="Bekijk de interactieve TapTime demo en ervaar hoe bezoekers hun drankjes bestellen, betalen en ophalen vanaf één mobiele flow." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B6CFF'/><text x='16' y='21' font-size='14' text-anchor='middle' fill='white' font-family='Inter, sans-serif'>T</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page--demo">
+  <header class="site-header" data-header>
+    <div class="container header__inner">
+      <a href="index.html#hero" class="header__logo" aria-label="Ga naar de homepage">TapTime</a>
+      <button class="header__toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toon menu" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="header__nav" id="primary-navigation" aria-label="Hoofdmenu">
+        <ul class="header__list">
+          <li><a href="index.html#product" class="header__link">Product</a></li>
+          <li><a href="demo.html" class="header__link" aria-current="page">Bekijk demo</a></li>
+          <li><a href="index.html#bezoekers" class="header__link">Voor bezoekers</a></li>
+          <li><a href="index.html#organisatoren" class="header__link">Voor organisatoren</a></li>
+          <li><a href="index.html#werking" class="header__link">Werking</a></li>
+          <li><a href="index.html#faq" class="header__link">FAQ</a></li>
+          <li><a href="index.html#contact" class="header__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero demo-hero" id="demo-hero">
+      <div class="container hero__inner">
+        <div class="hero__content" data-animate="fade-up">
+          <span class="hero__eyebrow">
+            <i data-lucide="smartphone" aria-hidden="true"></i>
+            Live productdemo
+          </span>
+          <h1 class="hero__title">Bestellen in de TapTime app, precies zoals je bezoeker het ziet.</h1>
+          <p class="hero__subtitle">
+            Kies een bar, voeg drankjes toe en volg de wachtrij vanuit een mobiel scherm. Zo ervaar je in enkele minuten hoe TapTime wachttijden verlaagt en de barflow versnelt.
+          </p>
+          <div class="hero__actions">
+            <a href="index.html#contact" class="btn btn--primary">
+              <i data-lucide="calendar-check" aria-hidden="true"></i>
+              Plan een demo met ons team
+            </a>
+            <a href="index.html" class="btn btn--ghost">
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+              Terug naar homepage
+            </a>
+          </div>
+          <ul class="hero__stats" aria-label="Hoogtepunten van de demo" data-stagger-group="demo-hero">
+            <li class="hero__stat" data-stagger-item>
+              <i data-lucide="sparkles" aria-hidden="true"></i>
+              <span class="hero__stat-text">Realtime wachttijden per bar</span>
+            </li>
+            <li class="hero__stat" data-stagger-item>
+              <i data-lucide="shopping-bag" aria-hidden="true"></i>
+              <span class="hero__stat-text">Mobiele menukaart met upsells</span>
+            </li>
+            <li class="hero__stat" data-stagger-item>
+              <i data-lucide="clock-4" aria-hidden="true"></i>
+              <span class="hero__stat-text">Statusupdates tot aan afhaalcode</span>
+            </li>
+          </ul>
+        </div>
+        <div class="hero__visual" data-animate="fade-left">
+          <div class="demo-experience__phone">
+            <div class="phone-frame">
+              <span class="phone-frame__notch"></span>
+              <div class="phone-frame__inner">
+                <div class="phone-frame__screen phone-frame__screen--app">
+                  <div class="demo-phone" data-demo-root>
+                    <header class="demo-phone__header">
+                      <h3 data-demo-bar-name>Selecteer een bar</h3>
+                      <p data-demo-bar-meta>Je ziet hier het live menu inclusief wachttijd en specials.</p>
+                    </header>
+                    <div class="demo-phone__body">
+                      <section class="demo-phone__section" aria-labelledby="demo-bars-heading">
+                        <h4 id="demo-bars-heading">Kies een bar</h4>
+                        <div class="demo__bar-list" data-demo-bars role="list"></div>
+                      </section>
+                      <section class="demo-phone__section" aria-labelledby="demo-menu-heading">
+                        <h4 id="demo-menu-heading">Menu</h4>
+                        <div class="demo__empty" data-demo-empty>
+                          <p>Kies een bar om het menu te bekijken.</p>
+                        </div>
+                        <div class="demo__menu" data-demo-menu hidden></div>
+                      </section>
+                      <section class="demo-phone__section demo-phone__section--order" aria-labelledby="demo-order-heading">
+                        <h4 id="demo-order-heading">Je bestelling</h4>
+                        <p data-demo-order-meta>Vul je mandje en ontdek hoe snel een order doorloopt.</p>
+                        <div class="demo__order" data-demo-cart>
+                          <p class="demo__empty">Nog niets geselecteerd. Voeg producten toe uit het menu.</p>
+                        </div>
+                      </section>
+                      <section class="demo-phone__section demo-phone__status" data-demo-status hidden aria-live="polite">
+                        <h4>Status bestelling <span data-demo-order-code></span></h4>
+                        <p data-demo-status-subtitle></p>
+                        <ol class="demo__status-list" data-demo-status-list></ol>
+                        <p class="demo__status-message" data-demo-status-message></p>
+                      </section>
+                      <section class="demo-phone__section demo-phone__queue" data-demo-queue hidden aria-live="polite">
+                        <h4>Live orderboard</h4>
+                        <p data-demo-queue-bar></p>
+                        <ul class="demo-phone__queue-list" data-demo-queue-list></ul>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-experience">
+      <div class="container demo-experience__inner">
+        <div class="demo-experience__copy" data-animate="fade-up">
+          <h2 class="section__title">Waarom deze demo werkt</h2>
+          <p>
+            De interactieve flow laat je zien hoe TapTime bezoekers stap voor stap begeleidt. Van het kiezen van de juiste bar tot het ophalen bij de counter: alles gebeurt in één mobiel scherm.
+          </p>
+          <ul class="demo-experience__list">
+            <li>Ontdek verschillende bars met eigen wachttijden en specials.</li>
+            <li>Voeg producten toe met upsells en ervaar het slimme mandje.</li>
+            <li>Volg live de wachtrij en ontvang automatisch een afhaalcode.</li>
+          </ul>
+        </div>
+        <div class="demo-preview__visual" data-animate="fade-left" aria-hidden="true">
+          <div class="phone-frame">
+            <span class="phone-frame__notch"></span>
+            <div class="phone-frame__inner">
+              <div class="phone-frame__screen phone-frame__screen--preview">
+                <div class="demo-preview__glow"></div>
+                <div class="demo-preview__card demo-preview__card--header">
+                  <span class="demo-preview__pill">Crew dashboard</span>
+                  <p>Volg bestellingen en wachttijden live</p>
+                </div>
+                <div class="demo-preview__card">
+                  <h4>Sneller schenken</h4>
+                  <p>TapTime spreidt drukte slim over bars en foodtrucks.</p>
+                </div>
+                <div class="demo-preview__card demo-preview__card--queue">
+                  <span class="demo-preview__queue-label">Realtime status</span>
+                  <strong>#241 gereed voor afhalen</strong>
+                  <p>Laat je bezoeker weten dat de bestelling klaarstaat.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-banner demo-page-cta" data-animate="fade-up">
+      <div class="container cta-banner__inner">
+        <p>Meer weten over TapTime op jouw evenement? Plan een persoonlijk gesprek met ons team.</p>
+        <a href="index.html#contact" class="btn btn--primary">Plan een kennismaking</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <a href="index.html#hero" class="footer__logo">TapTime</a>
+          <p class="footer__text">Bestellen en betalen zonder wachtrij voor elk festival en evenement.</p>
+          <div class="footer__social" aria-label="TapTime social media">
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <i data-lucide="instagram"></i>
+            </a>
+            <a href="mailto:info@taptime.nl" class="footer__social-link" aria-label="E-mail">
+              <i data-lucide="mail"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__column">
+            <h3 class="footer__heading">Product</h3>
+            <ul>
+              <li><a href="index.html#product">Overzicht</a></li>
+              <li><a href="index.html#werking">Hoe het werkt</a></li>
+              <li><a href="index.html#faq">Veelgestelde vragen</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <h3 class="footer__heading">Organisatoren</h3>
+            <ul>
+              <li><a href="index.html#organisatoren">Voordelen</a></li>
+              <li><a href="index.html#contact">Prijs op maat</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <h3 class="footer__heading">TapTime</h3>
+            <ul>
+              <li><a href="index.html#over">Over ons</a></li>
+              <li><a href="mailto:info@taptime.nl">Support</a></li>
+              <li><a href="index.html#contact">Plan een demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2024 TapTime. Alle rechten voorbehouden.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy</a>
+          <a href="#">Voorwaarden</a>
+          <a href="mailto:info@taptime.nl">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
