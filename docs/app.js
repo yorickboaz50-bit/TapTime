@@ -414,6 +414,454 @@ if (demoButton) {
   });
 }
 
+const initializePhoneCheckoutDemo = () => {
+  const container = document.querySelector('.live-demo__phone');
+  if (!container) {
+    return;
+  }
+
+  const stepOrder = ['choose-bar', 'menu', 'payment', 'confirmation'];
+  const screens = stepOrder.map((step) => container.querySelector(`[data-screen="${step}"]`));
+  const backButton = container.querySelector('[data-phone-back]');
+  const stepIndicator = container.querySelector('[data-phone-step]');
+  const barLabel = container.querySelector('[data-phone-bar]');
+  const menuList = container.querySelector('[data-menu-list]');
+  const cartBadge = container.querySelector('[data-test="cart"]');
+  const totalLabel = container.querySelector('[data-phone-total]');
+  const totalPayLabel = container.querySelector('[data-phone-total-pay]');
+  const goCheckoutButton = container.querySelector('[data-go-checkout]');
+  const payNowButton = container.querySelector('[data-pay-now]');
+  const summaryContainer = container.querySelector('.phone-demo__summary');
+  const newOrderButton = container.querySelector('[data-new-order]');
+  const orderIdEl = container.querySelector('[data-order-id]');
+  const orderBarEl = container.querySelector('[data-order-bar]');
+  const orderTotalEl = container.querySelector('[data-order-total]');
+  const barButtons = Array.from(container.querySelectorAll('.phone-demo__option'));
+  const tabButtons = Array.from(container.querySelectorAll('.phone-demo__tabs button'));
+  const tipButtons = Array.from(container.querySelectorAll('.phone-demo__tips button'));
+  const paymentButtons = Array.from(container.querySelectorAll('.phone-demo__payments button'));
+
+  if (
+    !stepIndicator ||
+    !barLabel ||
+    !menuList ||
+    !cartBadge ||
+    !totalLabel ||
+    !totalPayLabel ||
+    !goCheckoutButton ||
+    !payNowButton ||
+    !summaryContainer ||
+    !newOrderButton ||
+    !orderIdEl ||
+    !orderBarEl ||
+    !orderTotalEl
+  ) {
+    return;
+  }
+
+  const currency = new Intl.NumberFormat('nl-NL', {
+    style: 'currency',
+    currency: 'EUR'
+  });
+
+  const menuItems = [
+    { id: 'pils', name: 'TapTime Pils', price: 3.5, category: 'drank' },
+    { id: 'ipa', name: 'Hazy IPA', price: 4.8, category: 'drank' },
+    { id: 'spritz', name: 'Citrus Spritz', price: 6.5, category: 'drank' },
+    { id: 'mocktail', name: 'Vegan Mocktail', price: 5.2, category: 'drank' },
+    { id: 'friet', name: 'Loaded fries', price: 7.5, category: 'eten' },
+    { id: 'nachos', name: 'Crunchy nacho bowl', price: 6.9, category: 'eten' },
+    { id: 'burger', name: 'Festival smashburger', price: 9.5, category: 'eten' },
+    { id: 'donut', name: 'Kaneel donut duo', price: 4.2, category: 'eten' }
+  ];
+
+  const orderStorageKey = 'taptimePhoneOrder';
+
+  const state = {
+    stepIndex: 0,
+    selectedBar: '',
+    activeCategory: 'drank',
+    cart: new Map(),
+    tip: 0,
+    paymentMethod: 'iDEAL',
+    orderId: null,
+    totalWithTip: 0,
+    baseTotal: 0
+  };
+
+  const getCartEntries = () => Array.from(state.cart.values());
+  const calculateItemCount = () => getCartEntries().reduce((total, entry) => total + entry.quantity, 0);
+  const calculateBaseTotal = () =>
+    getCartEntries().reduce((total, entry) => total + entry.item.price * entry.quantity, 0);
+
+  const updateStepIndicator = () => {
+    stepIndicator.textContent = `${state.stepIndex + 1}/${stepOrder.length}`;
+  };
+
+  const updateBackButton = () => {
+    if (!backButton) {
+      return;
+    }
+
+    if (state.stepIndex === 0 || state.stepIndex === stepOrder.length - 1) {
+      backButton.setAttribute('hidden', '');
+    } else {
+      backButton.removeAttribute('hidden');
+    }
+  };
+
+  const updateBarLabel = () => {
+    barLabel.textContent = state.selectedBar ? state.selectedBar : 'Geen bar geselecteerd';
+  };
+
+  const updateCartBadge = () => {
+    const itemCount = calculateItemCount();
+    const baseTotal = calculateBaseTotal();
+    state.baseTotal = baseTotal;
+
+    cartBadge.classList.toggle('is-empty', itemCount === 0);
+    if (itemCount === 0) {
+      cartBadge.textContent = 'Je mandje is leeg';
+    } else {
+      cartBadge.innerHTML = `<span>${itemCount} ${itemCount === 1 ? 'artikel' : 'artikelen'}</span><span>${currency.format(baseTotal)}</span>`;
+    }
+
+    totalLabel.textContent = currency.format(baseTotal);
+    goCheckoutButton.disabled = itemCount === 0;
+    goCheckoutButton.setAttribute('aria-disabled', String(itemCount === 0));
+  };
+
+  const updateSummary = () => {
+    const baseTotal = state.baseTotal;
+    const tipAmount = baseTotal * (state.tip / 100);
+    const total = baseTotal + tipAmount;
+
+    state.totalWithTip = total;
+
+    totalPayLabel.textContent = currency.format(total);
+    summaryContainer.innerHTML = `
+      <div class="phone-demo__summary-row"><span>Bar</span><strong>${state.selectedBar || 'Nog te kiezen'}</strong></div>
+      <div class="phone-demo__summary-row"><span>Bestelling</span><strong>${currency.format(baseTotal)}</strong></div>
+      <div class="phone-demo__summary-row"><span>Fooi (${state.tip}%)</span><strong>${currency.format(tipAmount)}</strong></div>
+      <div class="phone-demo__summary-row"><span>Totaal</span><strong>${currency.format(total)}</strong></div>
+    `;
+
+    payNowButton.disabled = baseTotal === 0;
+    payNowButton.setAttribute('aria-disabled', String(baseTotal === 0));
+  };
+
+  const toggleScreen = (index) => {
+    screens.forEach((screen, idx) => {
+      if (!screen) {
+        return;
+      }
+
+      const isActive = idx === index;
+      screen.classList.toggle('is-active', isActive);
+      screen.setAttribute('aria-hidden', String(!isActive));
+    });
+
+    state.stepIndex = index;
+    updateStepIndicator();
+    updateBackButton();
+    updateBarLabel();
+
+    if (state.stepIndex === 1) {
+      renderMenu();
+    }
+
+    if (state.stepIndex === 2) {
+      updateSummary();
+    }
+  };
+
+  const goToScreen = (target) => {
+    const index = typeof target === 'number' ? target : stepOrder.indexOf(target);
+    if (index < 0 || index >= stepOrder.length) {
+      return;
+    }
+
+    toggleScreen(index);
+  };
+
+  const getItemQuantity = (itemId) => state.cart.get(itemId)?.quantity ?? 0;
+
+  const setItemQuantity = (item, quantity) => {
+    if (quantity <= 0) {
+      state.cart.delete(item.id);
+    } else {
+      state.cart.set(item.id, { item, quantity });
+    }
+
+    updateCartBadge();
+    updateSummary();
+  };
+
+  const renderMenu = () => {
+    menuList.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    const items = menuItems.filter((item) => item.category === state.activeCategory);
+
+    items.forEach((item) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'phone-demo__item';
+      wrapper.dataset.test = 'menu-item';
+
+      const info = document.createElement('div');
+      info.className = 'phone-demo__item-info';
+
+      const name = document.createElement('span');
+      name.className = 'phone-demo__item-name';
+      name.textContent = item.name;
+
+      const price = document.createElement('span');
+      price.className = 'phone-demo__item-price';
+      price.textContent = currency.format(item.price);
+
+      info.append(name, price);
+
+      const actions = document.createElement('div');
+      actions.className = 'phone-demo__item-actions';
+
+      const minus = document.createElement('button');
+      minus.type = 'button';
+      minus.textContent = '−';
+      minus.setAttribute('aria-label', `Verwijder ${item.name} uit je mandje`);
+
+      const quantity = document.createElement('span');
+      quantity.textContent = String(getItemQuantity(item.id));
+
+      const plus = document.createElement('button');
+      plus.type = 'button';
+      plus.textContent = '+';
+      plus.setAttribute('aria-label', `Voeg ${item.name} toe aan je mandje`);
+
+      const updateQuantity = (delta) => {
+        const current = getItemQuantity(item.id);
+        const next = Math.max(0, current + delta);
+        setItemQuantity(item, next);
+        quantity.textContent = String(getItemQuantity(item.id));
+        minus.disabled = getItemQuantity(item.id) === 0;
+      };
+
+      minus.addEventListener('click', () => {
+        updateQuantity(-1);
+      });
+
+      plus.addEventListener('click', () => {
+        updateQuantity(1);
+      });
+
+      minus.disabled = getItemQuantity(item.id) === 0;
+
+      actions.append(minus, quantity, plus);
+      wrapper.append(info, actions);
+      fragment.append(wrapper);
+    });
+
+    menuList.append(fragment);
+  };
+
+  const persistOrder = (orderData) => {
+    try {
+      sessionStorage.setItem(orderStorageKey, JSON.stringify(orderData));
+    } catch (error) {
+      console.warn('Kon bestelling niet opslaan in sessionStorage.', error);
+    }
+  };
+
+  const clearPersistedOrder = () => {
+    try {
+      sessionStorage.removeItem(orderStorageKey);
+    } catch (error) {
+      console.warn('Kon opgeslagen bestelling niet verwijderen.', error);
+    }
+  };
+
+  const applyStoredOrder = () => {
+    try {
+      const stored = sessionStorage.getItem(orderStorageKey);
+      if (!stored) {
+        return false;
+      }
+
+      const parsed = JSON.parse(stored);
+      if (!parsed || !parsed.orderId) {
+        return false;
+      }
+
+      state.selectedBar = parsed.bar ?? '';
+      state.orderId = parsed.orderId;
+      state.totalWithTip = parsed.total ?? 0;
+      state.tip = parsed.tip ?? 0;
+      state.baseTotal = parsed.baseTotal ?? 0;
+
+      orderIdEl.textContent = parsed.orderId;
+      orderBarEl.textContent = parsed.bar ?? 'Onbekende bar';
+      orderTotalEl.textContent = currency.format(parsed.total ?? 0);
+      updateBarLabel();
+      updateStepIndicator();
+      updateBackButton();
+      toggleScreen(stepOrder.length - 1);
+      return true;
+    } catch (error) {
+      console.warn('Kon opgeslagen bestelling niet laden.', error);
+      return false;
+    }
+  };
+
+  const resetDemo = () => {
+    state.cart.clear();
+    state.tip = 0;
+    state.paymentMethod = 'iDEAL';
+    state.selectedBar = '';
+    state.orderId = null;
+    state.totalWithTip = 0;
+    state.baseTotal = 0;
+    state.activeCategory = 'drank';
+
+    tabButtons.forEach((button) => {
+      const isActive = button.dataset.category === state.activeCategory;
+      button.setAttribute('aria-selected', String(isActive));
+    });
+
+    tipButtons.forEach((button) => {
+      const isActive = Number.parseInt(button.dataset.tip ?? '0', 10) === state.tip;
+      button.setAttribute('aria-checked', String(isActive));
+    });
+
+    paymentButtons.forEach((button) => {
+      const isActive = (button.dataset.method ?? '') === state.paymentMethod;
+      button.setAttribute('aria-checked', String(isActive));
+    });
+
+    barButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', 'false');
+    });
+
+    orderIdEl.textContent = 'TAP-000000';
+    orderBarEl.textContent = '—';
+    orderTotalEl.textContent = currency.format(0);
+
+    clearPersistedOrder();
+    renderMenu();
+    updateCartBadge();
+    updateSummary();
+    goToScreen(0);
+  };
+
+  barButtons.forEach((button) => {
+    button.setAttribute('aria-pressed', 'false');
+    button.addEventListener('click', () => {
+      const barName = button.dataset.bar ?? '';
+      state.selectedBar = barName;
+      barButtons.forEach((innerButton) => {
+        innerButton.setAttribute('aria-pressed', innerButton === button ? 'true' : 'false');
+      });
+      updateBarLabel();
+      updateSummary();
+      window.setTimeout(() => {
+        goToScreen(1);
+      }, 220);
+    });
+  });
+
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.category ?? 'drank';
+      state.activeCategory = category;
+      tabButtons.forEach((inner) => {
+        inner.setAttribute('aria-selected', inner === button ? 'true' : 'false');
+      });
+      renderMenu();
+    });
+  });
+
+  tipButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextTip = Number.parseInt(button.dataset.tip ?? '0', 10);
+      state.tip = Number.isNaN(nextTip) ? 0 : nextTip;
+      tipButtons.forEach((inner) => {
+        inner.setAttribute('aria-checked', inner === button ? 'true' : 'false');
+      });
+      updateSummary();
+    });
+  });
+
+  paymentButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      state.paymentMethod = button.dataset.method ?? 'iDEAL';
+      paymentButtons.forEach((inner) => {
+        inner.setAttribute('aria-checked', inner === button ? 'true' : 'false');
+      });
+    });
+  });
+
+  goCheckoutButton.addEventListener('click', () => {
+    if (goCheckoutButton.disabled) {
+      return;
+    }
+
+    goToScreen(2);
+  });
+
+  backButton?.addEventListener('click', () => {
+    if (state.stepIndex > 0) {
+      goToScreen(state.stepIndex - 1);
+    }
+  });
+
+  const generateOrderId = () => {
+    const random = Math.floor(100000 + Math.random() * 900000);
+    return `TAP-${random}`;
+  };
+
+  const finalizeOrder = () => {
+    if (state.baseTotal === 0 || !state.selectedBar) {
+      return;
+    }
+
+    const orderId = generateOrderId();
+    state.orderId = orderId;
+
+    const orderData = {
+      orderId,
+      bar: state.selectedBar,
+      total: state.totalWithTip,
+      tip: state.tip,
+      baseTotal: state.baseTotal
+    };
+
+    orderIdEl.textContent = orderId;
+    orderBarEl.textContent = state.selectedBar;
+    orderTotalEl.textContent = currency.format(state.totalWithTip);
+
+    persistOrder(orderData);
+
+    state.cart.clear();
+    renderMenu();
+    updateCartBadge();
+    updateSummary();
+
+    goToScreen(stepOrder.length - 1);
+  };
+
+  payNowButton.addEventListener('click', finalizeOrder);
+
+  newOrderButton.addEventListener('click', () => {
+    resetDemo();
+  });
+
+  if (!applyStoredOrder()) {
+    renderMenu();
+    updateCartBadge();
+    updateSummary();
+    toggleScreen(0);
+  }
+};
+
+initializePhoneCheckoutDemo();
+
 const demoRoot = document.querySelector('[data-demo-root]');
 
 if (demoRoot) {
