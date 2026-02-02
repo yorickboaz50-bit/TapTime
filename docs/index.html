@@ -4,807 +4,387 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TapTime | Bestellen zonder wachtrij voor festivals</title>
-  <meta name="description" content="TapTime is het slimme webplatform waarmee festivalbezoekers hun drankjes bestellen, betalen en ophalen zonder wachtrij. Ontdek de voordelen voor bezoekers en organisatoren." />
-  <meta property="og:title" content="TapTime | Bestellen zonder wachtrij" />
-  <meta property="og:description" content="TapTime laat bezoekers vooraf bestellen en betalen, terwijl organisatoren realtime inzicht krijgen in verkoop en drukte." />
+  <title>Shadow Inventory | Exclusieve woningkansen</title>
+  <meta name="description" content="Shadow Inventory geeft woningzoekers een voorsprong met realtime alerts en toegang tot verborgen aanbod." />
+  <meta property="og:title" content="Shadow Inventory | Exclusieve woningkansen" />
+  <meta property="og:description" content="Stop met huilen op Funda. Onze bots reageren sneller dan de massa." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://taptime.example.com" />
-  <meta property="og:image" content="https://taptime.example.com/assets/hero-illustration.png" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B6CFF'/><text x='16' y='21' font-size='14' text-anchor='middle' fill='white' font-family='Inter, sans-serif'>T</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="ios-phone.css" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #06070b;
+      --bg-soft: #0d0f16;
+      --panel: #11131c;
+      --text: #eef1ff;
+      --muted: #a7b0d8;
+      --neon: #39ffb8;
+      --neon-2: #4fc3ff;
+      --border: rgba(79, 195, 255, 0.25);
+      --shadow: 0 24px 60px rgba(9, 12, 24, 0.65);
+      --radius: 20px;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", "SF Pro Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, rgba(79, 195, 255, 0.15), transparent 55%),
+        radial-gradient(circle at 20% 20%, rgba(57, 255, 184, 0.18), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(6, 7, 11, 0.8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(79, 195, 255, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .brand span {
+      color: var(--neon);
+      text-shadow: 0 0 18px rgba(57, 255, 184, 0.5);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 110px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--neon-2);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(140deg, rgba(79, 195, 255, 0.12), rgba(57, 255, 184, 0.06));
+      border: 1px solid rgba(79, 195, 255, 0.3);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card strong {
+      color: var(--neon);
+    }
+
+    .hero-metrics {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .hero-metric {
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: rgba(12, 14, 22, 0.7);
+      border: 1px solid rgba(79, 195, 255, 0.18);
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(79, 195, 255, 0.15);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(8, 10, 20, 0.55);
+    }
+
+    .panel h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .social-proof {
+      background: linear-gradient(120deg, rgba(79, 195, 255, 0.1), rgba(6, 7, 11, 0.2));
+      border: 1px solid rgba(57, 255, 184, 0.2);
+      padding: 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .cta {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+      background: var(--bg-soft);
+      border: 1px solid rgba(57, 255, 184, 0.3);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--neon);
+      margin: 12px 0 6px;
+    }
+
+    .cta button {
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(120deg, var(--neon), var(--neon-2));
+      color: #05060a;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(57, 255, 184, 0.35);
+    }
+
+    .cta button:hover,
+    .cta button:focus {
+      filter: brightness(1.05);
+    }
+
+    .faq {
+      display: grid;
+      gap: 16px;
+    }
+
+    details {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 18px 22px;
+      border: 1px solid rgba(79, 195, 255, 0.15);
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header" data-header>
-    <div class="container header__inner">
-      <a href="#hero" class="header__logo" aria-label="Ga naar begin van de pagina">TapTime</a>
-      <button class="header__toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toon menu" data-nav-toggle>
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="header__nav" id="primary-navigation" aria-label="Hoofdmenu">
-        <ul class="header__list">
-          <li><a href="#product" class="header__link">Product</a></li>
-          <li><a href="ios-demo.html" class="header__link">Bekijk demo</a></li>
-          <li><a href="#bezoekers" class="header__link">Voor bezoekers</a></li>
-          <li><a href="#organisatoren" class="header__link">Voor organisatoren</a></li>
-          <li><a href="#werking" class="header__link">Werking</a></li>
-          <li><a href="#faq" class="header__link">FAQ</a></li>
-          <li><a href="#contact" class="header__link">Contact</a></li>
-        </ul>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">Shadow <span>Inventory</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">Hoe het werkt</a>
+        <a href="#proof">Social proof</a>
+        <a href="#cta">Toegang</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="hero">
-      <div class="container hero__inner">
-        <div class="hero__content" data-animate="fade-up">
-          <span class="hero__eyebrow">
-            <i data-lucide="sparkles" aria-hidden="true"></i>
-            Conceptwebsite
-          </span>
-          <h1 class="hero__title">Bestel, betaal en haal op – zonder wachtrij.</h1>
-          <p class="hero__subtitle">TapTime is de slimme webapp waarmee festivalbezoekers eten en drinken bestellen zonder te wachten.</p>
-          <div class="hero__actions">
-            <a href="ios-demo.html" class="btn btn--primary btn--pulse" data-demo-button>
-              <span class="btn__pulse" data-pulse aria-hidden="true"></span>
-              <i data-lucide="play" aria-hidden="true"></i>
-              👉 Probeer de demo
-            </a>
-            <a href="#" class="btn btn--ghost" role="button">
-              <i data-lucide="download-cloud" aria-hidden="true"></i>
-              Download infosheet (PDF)
-            </a>
-          </div>
-          <ul class="hero__stats" aria-label="Voorbeeld wachttijden" data-stagger-group="hero">
-            <li class="hero__stat" data-stagger-item>
-              <i data-lucide="signal" aria-hidden="true"></i>
-              <span class="hero__stat-text">Main Stage Bar · Rustig</span>
-            </li>
-            <li class="hero__stat" data-stagger-item>
-              <i data-lucide="flame" aria-hidden="true"></i>
-              <span class="hero__stat-text">Craft Beer Corner · Druk</span>
-            </li>
-            <li class="hero__stat" data-stagger-item>
-              <i data-lucide="waves" aria-hidden="true"></i>
-              <span class="hero__stat-text">Cocktail Lab · Doorstroming goed</span>
-            </li>
-          </ul>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Exclusieve toegang</p>
+          <h1>Stop met huilen op Funda.</h1>
+          <p>Terwijl jij ververst, zijn onze bots al aan het reageren. Krijg toegang tot woningen die de massa nooit te zien krijgt.</p>
         </div>
-        <div class="hero__visual" data-animate="fade-left">
-          <div class="hero__glow" data-hero-glow aria-hidden="true"></div>
-          <figure class="hero__photo" data-hero-visual>
-            <img
-              src="https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=1200&q=80"
-              alt="Festivalbezoekers proosten met bier tijdens zonsondergang"
-              loading="lazy"
-            />
-          </figure>
-          <div class="hero__badge" data-float>
-            <span class="hero__badge-icon" aria-hidden="true">
-              <i data-lucide="sparkles"></i>
-            </span>
-            <div class="hero__badge-text">
-              <span>Realtime inzicht</span>
-              <strong>Live druktemeter</strong>
-            </div>
-          </div>
-          <div class="hero__badge hero__badge--secondary" data-float>
-            <span class="hero__badge-icon" aria-hidden="true">
-              <i data-lucide="timer"></i>
-            </span>
-            <div class="hero__badge-text">
-              <span>Gem. ophaaltijd</span>
-              <strong>2 minuten</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="hero__note">TapTime is momenteel een concept. Deze website informeert over de mogelijkheden; live bestelfunctionaliteit volgt later.</p>
-    </section>
-
-    <section id="live-demo" class="live-demo" aria-labelledby="live-demo-title">
-      <div class="container live-demo__inner" data-animate="fade-up">
-        <div class="live-demo__content">
-          <span class="live-demo__badge">Live demo</span>
-          <h2 id="live-demo-title">Ervaar de magie van TapTime in actie</h2>
-          <p class="live-demo__subtitle">
-            Bekijk hoe gasten in 10 seconden afrekenen — zonder app te downloaden.
-          </p>
-          <ul class="live-demo__highlights">
-            <li>Razendsnel bestellen op locatie</li>
-            <li>Heldere prijzen inclusief fooienopties</li>
-            <li>Bevestiging met uniek TAP-ordernummer</li>
-          </ul>
-        </div>
-        <div class="live-demo__phone" data-phone-demo>
-          <div class="phone-demo__frame" role="region" aria-label="TapTime checkout voorbeeld">
-            <div class="phone-demo__notch" aria-hidden="true"></div>
-            <header class="phone-demo__status">
-              <button type="button" class="phone-demo__back" data-phone-back aria-label="Ga een stap terug">
-                <i data-lucide="chevron-left" aria-hidden="true"></i>
-                <span>Terug</span>
-              </button>
-              <span class="phone-demo__step" data-phone-step>1/4</span>
-              <span class="phone-demo__bar" data-phone-bar>Geen bar geselecteerd</span>
-            </header>
-            <div class="phone-demo__viewport">
-              <section
-                class="phone-demo__screen is-active"
-                data-screen="choose-bar"
-                aria-labelledby="phone-demo-heading-choose"
-                aria-hidden="false"
-              >
-                <div class="phone-demo__body">
-                  <h3 id="phone-demo-heading-choose">Kies je bar</h3>
-                  <p class="phone-demo__description">Selecteer de bar waar je wilt ophalen.</p>
-                  <div class="phone-demo__options" role="list">
-                    <button type="button" class="phone-demo__option" data-bar="Main Bar" data-test="choose-bar">
-                      <span class="phone-demo__option-title">Main Bar</span>
-                      <span class="phone-demo__option-meta">Centraal plein</span>
-                    </button>
-                    <button type="button" class="phone-demo__option" data-bar="Food Court West" data-test="choose-bar">
-                      <span class="phone-demo__option-title">Food Court West</span>
-                      <span class="phone-demo__option-meta">Streetfood classics</span>
-                    </button>
-                    <button type="button" class="phone-demo__option" data-bar="Cocktail Corner" data-test="choose-bar">
-                      <span class="phone-demo__option-title">Cocktail Corner</span>
-                      <span class="phone-demo__option-meta">Mixology masters</span>
-                    </button>
-                    <button type="button" class="phone-demo__option" data-bar="Beer Garden" data-test="choose-bar">
-                      <span class="phone-demo__option-title">Beer Garden</span>
-                      <span class="phone-demo__option-meta">Speciaalbier uit fust</span>
-                    </button>
-                    <button type="button" class="phone-demo__option" data-bar="Vegan Bites" data-test="choose-bar">
-                      <span class="phone-demo__option-title">Vegan Bites</span>
-                      <span class="phone-demo__option-meta">Plant-based streetfood</span>
-                    </button>
-                    <button type="button" class="phone-demo__option" data-bar="Coffee &amp; Donuts" data-test="choose-bar">
-                      <span class="phone-demo__option-title">Coffee &amp; Donuts</span>
-                      <span class="phone-demo__option-meta">Zoete energieboost</span>
-                    </button>
-                  </div>
-                </div>
-              </section>
-              <section
-                class="phone-demo__screen"
-                data-screen="menu"
-                aria-labelledby="phone-demo-heading-menu"
-                aria-hidden="true"
-              >
-                <div class="phone-demo__body">
-                  <div class="phone-demo__tabs" role="tablist" aria-label="Menu categorie">
-                    <button type="button" role="tab" aria-selected="true" data-category="drank">Drank</button>
-                    <button type="button" role="tab" aria-selected="false" data-category="eten">Eten</button>
-                  </div>
-                  <div class="phone-demo__cart" data-test="cart" aria-live="polite"></div>
-                  <h3 id="phone-demo-heading-menu">Kies je drinken of eten</h3>
-                  <p class="phone-demo__description">Voeg items toe aan je bestelling.</p>
-                  <div class="phone-demo__menu" data-menu-list></div>
-                </div>
-                <footer class="phone-demo__footer">
-                  <div>
-                    <span class="phone-demo__total-label">Totaal</span>
-                    <strong class="phone-demo__total" data-phone-total>€ 0,00</strong>
-                  </div>
-                  <button type="button" class="phone-demo__cta" data-go-checkout data-test="go-checkout" disabled>
-                    Ga naar afrekenen
-                  </button>
-                </footer>
-              </section>
-              <section
-                class="phone-demo__screen"
-                data-screen="payment"
-                aria-labelledby="phone-demo-heading-payment"
-                aria-hidden="true"
-              >
-                <div class="phone-demo__body">
-                  <h3 id="phone-demo-heading-payment">Controleer en betaal</h3>
-                  <p class="phone-demo__description">Kies je fooi en betaalmethode.</p>
-                  <div class="phone-demo__summary" aria-live="polite"></div>
-                  <div class="phone-demo__tips" role="radiogroup" aria-label="Kies fooi percentage">
-                    <button type="button" role="radio" aria-checked="true" data-tip="0">0%</button>
-                    <button type="button" role="radio" aria-checked="false" data-tip="5">5%</button>
-                    <button type="button" role="radio" aria-checked="false" data-tip="10">10%</button>
-                    <button type="button" role="radio" aria-checked="false" data-tip="15">15%</button>
-                  </div>
-                  <div class="phone-demo__payments" role="radiogroup" aria-label="Betaalmethode">
-                    <button type="button" role="radio" aria-checked="true" data-method="iDEAL">iDEAL</button>
-                    <button type="button" role="radio" aria-checked="false" data-method="Apple Pay">Apple Pay</button>
-                    <button type="button" role="radio" aria-checked="false" data-method="Creditcard">Creditcard</button>
-                  </div>
-                </div>
-                <footer class="phone-demo__footer">
-                  <div>
-                    <span class="phone-demo__total-label">Totaal</span>
-                    <strong class="phone-demo__total" data-phone-total-pay>€ 0,00</strong>
-                  </div>
-                  <button type="button" class="phone-demo__cta" data-pay-now data-test="pay-now">
-                    Betaal nu
-                  </button>
-                </footer>
-              </section>
-              <section
-                class="phone-demo__screen"
-                data-screen="confirmation"
-                aria-labelledby="phone-demo-heading-confirm"
-                aria-hidden="true"
-              >
-                <div class="phone-demo__body phone-demo__body--center">
-                  <div class="phone-demo__check" aria-hidden="true">
-                    <i data-lucide="check"></i>
-                  </div>
-                  <h3 id="phone-demo-heading-confirm">Bestelling bevestigd!</h3>
-                  <p class="phone-demo__description">Laat dit scherm aan de bar zien om op te halen.</p>
-                  <dl class="phone-demo__details">
-                    <div>
-                      <dt>Ordernummer</dt>
-                      <dd data-order-id data-test="order-id">TAP-000000</dd>
-                    </div>
-                    <div>
-                      <dt>Bar</dt>
-                      <dd data-order-bar>—</dd>
-                    </div>
-                    <div>
-                      <dt>Totaal</dt>
-                      <dd data-order-total>€ 0,00</dd>
-                    </div>
-                  </dl>
-                </div>
-                <footer class="phone-demo__footer">
-                  <button type="button" class="phone-demo__cta" data-new-order>
-                    Nieuwe bestelling plaatsen
-                  </button>
-                </footer>
-              </section>
-            </div>
+        <div class="hero-card">
+          <h2>Shadow Inventory</h2>
+          <p>Een besloten netwerk dat woningzoekenden een <strong>60-seconden voorsprong</strong> geeft op verborgen aanbod.</p>
+          <div class="hero-metrics">
+            <div class="hero-metric">⚡ 24/7 monitoring van beleggersportals</div>
+            <div class="hero-metric">🔒 Alleen voor insiders met serieuze intentie</div>
+            <div class="hero-metric">📩 Telegram-alerts binnen 60 seconden</div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="hero-seo" data-animate="fade-up">
-      <div class="container hero-seo__inner">
-        <p>
-          TapTime is hét festival bestelsysteem voor drukke evenementen waar service telt. Met cashless betalen versnellen
-          we elke bar, zodat horeca op evenementen continu doorloopt en bezoekers niet meer twijfelen. Organisatoren
-          krijgen realtime inzicht in populariteit per bar, stemmen personeel hierop af en sturen wachtrijen proactief bij.
-          Bezoekers kiezen hun favoriete gerecht, rekenen veilig af en ontvangen meldingen zodra hun bestelling klaarstaat.
-          Zo verandert elke drukke set in een vloeiende beleving zonder stressmomenten voor crew of publiek gedurende het
-          hele festival.
-        </p>
-      </div>
-    </div>
-
-    <section class="section" id="product">
+    <section class="section" id="how">
       <div class="container">
-        <div class="section__intro" data-animate="fade-up">
-          <span class="section__eyebrow">
-            <i data-lucide="sparkle" aria-hidden="true"></i>
-            Waarom TapTime?
-          </span>
-          <h2 class="section__title">Verkort de rij, verhoog de beleving</h2>
-          <p class="section__subtitle">Een digitale bestelstraat die aansluit bij hoe bezoekers zich bewegen over het terrein en hoe bars werken.</p>
-        </div>
-        <div class="grid grid--benefits" role="list" data-stagger-group="benefits">
-          <article class="card card--benefit" role="listitem" data-stagger-item>
-            <div class="card__icon" aria-hidden="true">
-              <i data-lucide="users"></i>
-            </div>
-            <h3 class="card__title">Minder rijen</h3>
-            <p class="card__text">Verminder wachttijden tot wel 40% bij bars en foodtrucks dankzij slimme spreiding.</p>
+        <h2 class="section-title">Hoe het werkt</h2>
+        <p class="section-subtitle">Drie stappen. Geen gedoe. Alleen snelheid en exclusieve toegang.</p>
+        <div class="how-grid">
+          <article class="panel">
+            <h3>We Scannen</h3>
+            <p>Onze AI checkt 24/7 de portals van grote beleggers en vage buurt-apps.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-stagger-item>
-            <div class="card__icon" aria-hidden="true">
-              <i data-lucide="trending-up"></i>
-            </div>
-            <h3 class="card__title">Meer omzet</h3>
-            <p class="card__text">Organisatoren rapporteren gemiddeld 25% hogere omzet door snellere doorloop.</p>
+          <article class="panel">
+            <h3>Jij Krijgt Melding</h3>
+            <p>Ontvang een Telegram-alert binnen 60 seconden na plaatsing.</p>
           </article>
-          <article class="card card--benefit" role="listitem" data-stagger-item>
-            <div class="card__icon" aria-hidden="true">
-              <i data-lucide="activity"></i>
-            </div>
-            <h3 class="card__title">Realtime dashboard</h3>
-            <p class="card__text">Volg bestellingen live en plan personeel efficiënter met direct inzicht in pieken.</p>
+          <article class="panel">
+            <h3>Jij Wint</h3>
+            <p>Reageer als eerste en claim je bezichtiging.</p>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="testimonials" data-animate="fade-up">
-          <figure class="testimonial">
-            <blockquote>
-              “TapTime halveerde onze rijen – bezoekers waren dolblij!”
-            </blockquote>
-            <figcaption>Event Manager, SummerFest</figcaption>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>
-              “Ik kon eindelijk zonder stress een drankje halen!”
-            </blockquote>
-            <figcaption>Bezoeker, Food &amp; Beats Festival</figcaption>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>
-              “De bar draaide efficiënter dan ooit.”
-            </blockquote>
-            <figcaption>Barbeheerder, City BrewFest</figcaption>
-          </figure>
+    <section class="section" id="proof">
+      <div class="container social-proof">
+        <h2 class="section-title">Insiders only</h2>
+        <p>Al 450+ woningzoekenden in Amsterdam en Utrecht gebruiken Shadow Inventory om de wachtrij over te slaan.</p>
+      </div>
+    </section>
+
+    <section class="section" id="cta">
+      <div class="container cta">
+        <div>
+          <p class="eyebrow">Toegang</p>
+          <h2 class="section-title">Toegang tot de Shadow Inventory.</h2>
+          <p class="section-subtitle">€14,99 per maand. Altijd opzegbaar.</p>
+        </div>
+        <div>
+          <div class="price">€14,99</div>
+          <p>Per maand · direct opzegbaar</p>
+          <button type="button">Claim mijn voorsprong</button>
         </div>
       </div>
     </section>
 
-    <section class="section section--split" id="bezoekers">
-      <div class="container split">
-        <div class="split__column" data-animate="fade-up">
-          <h2 class="section__title">Voor bezoekers</h2>
-          <ol class="steps">
-            <li class="steps__item" data-animate="fade-up" data-animate-order="0">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">1</span>
-                <i data-lucide="scan"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Scan of open de webapp</h3>
-                <p class="steps__text">Geen download nodig. TapTime werkt in elke mobiele browser.</p>
-              </div>
-            </li>
-            <li class="steps__item" data-animate="fade-up" data-animate-order="1">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">2</span>
-                <i data-lucide="map-pin"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Kies je bar en drankje</h3>
-                <p class="steps__text">Bekijk menu’s per bar en zie direct de actuele wachttijd.</p>
-              </div>
-            </li>
-            <li class="steps__item" data-animate="fade-up" data-animate-order="2">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">3</span>
-                <i data-lucide="wallet"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Betaal in één keer</h3>
-                <p class="steps__text">Reken af met iDEAL, Apple Pay of creditcard. Ontvang direct je afhaalcode.</p>
-              </div>
-            </li>
-            <li class="steps__item" data-animate="fade-up" data-animate-order="3">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">4</span>
-                <i data-lucide="party-popper"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Haal relaxed op</h3>
-                <p class="steps__text">Je krijgt een pushmelding zodra de bar je bestelling klaarzet.</p>
-              </div>
-            </li>
-          </ol>
-          <figure class="split__photo" data-animate="fade-left">
-            <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-              alt="Vriendengroep die in een festivalrij lacht terwijl ze op drankjes wachten"
-              loading="lazy"
-            />
-            <figcaption class="visually-hidden">Sfeerbeeld van bezoekers die ontspannen wachten op hun drankjes.</figcaption>
-          </figure>
-        </div>
-        <div class="split__column" id="organisatoren" data-animate="fade-up">
-          <h2 class="section__title">Voor organisatoren</h2>
-          <ol class="steps steps--accent">
-            <li class="steps__item" data-animate="fade-up" data-animate-order="0">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">1</span>
-                <i data-lucide="settings-2"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Configureer menu’s en bars</h3>
-                <p class="steps__text">Zet producten, prijzen en openingstijden klaar per bar of per crew.</p>
-              </div>
-            </li>
-            <li class="steps__item" data-animate="fade-up" data-animate-order="1">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">2</span>
-                <i data-lucide="inbox"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Ontvang digitale bestellingen</h3>
-                <p class="steps__text">Personeel ziet betaalde orders binnenkomen op de TapTime keukenschermen.</p>
-              </div>
-            </li>
-            <li class="steps__item" data-animate="fade-up" data-animate-order="2">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">3</span>
-                <i data-lucide="check-circle-2"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Markeer ‘klaar’</h3>
-                <p class="steps__text">Met één tik krijgen bezoekers een melding dat ze kunnen ophalen.</p>
-              </div>
-            </li>
-            <li class="steps__item" data-animate="fade-up" data-animate-order="3">
-              <span class="steps__icon" aria-hidden="true">
-                <span class="steps__index">4</span>
-                <i data-lucide="chart-line"></i>
-              </span>
-              <div>
-                <h3 class="steps__title">Bekijk realtime data</h3>
-                <p class="steps__text">Volg omzet, wachttijden en pieken live en stuur extra crew waar nodig.</p>
-              </div>
-            </li>
-          </ol>
-          <figure class="split__photo" data-animate="fade-left">
-            <img
-              src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80"
-              alt="Barmedewerker die biertjes aan het tappen is achter een festivalbar"
-              loading="lazy"
-            />
-            <figcaption class="visually-hidden">Organisator die bestellingen voorbereidt bij een drukbezochte bar.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--flow" aria-labelledby="flow-heading">
-      <div class="container flow">
-        <div class="flow__visual" data-animate="fade-in">
-          <div class="flow__mockup" aria-hidden="true">
-            <div class="flow__screen flow__screen--primary"></div>
-            <div class="flow__screen flow__screen--secondary"></div>
-            <div class="flow__screen flow__screen--tertiary"></div>
-          </div>
-        </div>
-        <div class="flow__content" data-animate="fade-up">
-          <span class="section__eyebrow">Zo werkt TapTime</span>
-          <h2 class="section__title" id="flow-heading">In vier snelle stappen naar je bestelling</h2>
-          <ul class="flow__steps">
-            <li class="flow__step" data-animate="fade-up" data-animate-order="0">
-              <span class="flow__icon" aria-hidden="true">1️⃣</span>
-              <div>
-                <h3>Scan QR-code</h3>
-                <p>Open de TapTime webapp direct via de QR-code bij de ingang of op je polsbandje.</p>
-              </div>
-            </li>
-            <li class="flow__step" data-animate="fade-up" data-animate-order="1">
-              <span class="flow__icon" aria-hidden="true">2️⃣</span>
-              <div>
-                <h3>Kies gerecht of drankje</h3>
-                <p>Blader door het menu van elke bar en zie meteen welke wachtrij het kortst is.</p>
-              </div>
-            </li>
-            <li class="flow__step" data-animate="fade-up" data-animate-order="2">
-              <span class="flow__icon" aria-hidden="true">3️⃣</span>
-              <div>
-                <h3>Betaal online</h3>
-                <p>Reken veilig af met je favoriete methode en ontvang automatisch je afhaalcode.</p>
-              </div>
-            </li>
-            <li class="flow__step" data-animate="fade-up" data-animate-order="3">
-              <span class="flow__icon" aria-hidden="true">4️⃣</span>
-              <div>
-                <h3>Haal bestelling op</h3>
-                <p>Loop naar de bar wanneer het jou uitkomt en laat de code scannen om meteen te proosten.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--gallery" aria-labelledby="gallery-heading">
+    <section class="section" id="faq">
       <div class="container">
-        <div class="section__intro" data-animate="fade-up">
-          <span class="section__eyebrow">
-            <i data-lucide="camera"></i>
-            Sfeerimpressie
-          </span>
-          <h2 class="section__title" id="gallery-heading">Borrelsfeer zonder wachttijd</h2>
-          <p class="section__subtitle">TapTime verbindt het festivalgevoel met snelle service: proosten, feesten en doorlopen.</p>
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary>Hoe krijg ik de alerts?</summary>
+            <p>Na aanmelding voeg je onze Telegram-bot toe. Elke match komt binnen als directe pushmelding.</p>
+          </details>
+          <details>
+            <summary>Welke steden volgen jullie?</summary>
+            <p>We starten in Amsterdam en Utrecht en voegen elke maand nieuwe hotspots toe.</p>
+          </details>
+          <details>
+            <summary>Kan ik opzeggen wanneer ik wil?</summary>
+            <p>Ja. Je stopt direct vanuit je account, geen kleine lettertjes.</p>
+          </details>
+          <details>
+            <summary>Is dit geschikt voor beleggers?</summary>
+            <p>Shadow Inventory is gemaakt voor serieuze woningzoekers die snel willen handelen.</p>
+          </details>
         </div>
-        <div class="gallery" role="list">
-          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="0">
-            <img
-              src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1000&q=80"
-              alt="Publiek dat feest tijdens een openluchtfestival met confetti"
-              loading="lazy"
-            />
-            <figcaption class="gallery__caption">Energieke mainstage waar bezoekers volop genieten.</figcaption>
-          </figure>
-          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="1">
-            <img
-              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80"
-              alt="Twee handen die met koude biertjes klinken"
-              loading="lazy"
-            />
-            <figcaption class="gallery__caption">Vers getapt bier binnen handbereik.</figcaption>
-          </figure>
-          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="2">
-            <img
-              src="https://images.unsplash.com/photo-1444212477490-ca407925329e?auto=format&fit=crop&w=1000&q=80"
-              alt="Rij festivalbezoekers die richting de bar loopt"
-              loading="lazy"
-            />
-            <figcaption class="gallery__caption">Slim spreiden van wachtrijen over het terrein.</figcaption>
-          </figure>
-          <figure class="gallery__item" role="listitem" data-animate="fade-up" data-animate-order="3">
-            <img
-              src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1000&q=80"
-              alt="Barmedewerker die cocktails afwerkt onder kleurrijk licht"
-              loading="lazy"
-            />
-            <figcaption class="gallery__caption">Crew houdt overzicht dankzij realtime bestellingen.</figcaption>
-          </figure>
-        </div>
-        <div class="gallery__cta" data-animate="fade-up">
-          <p>Ontdek hoe TapTime jouw festival sneller laat draaien →</p>
-          <a href="#contact" class="btn btn--primary">Plan een demo</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--timeline" id="werking">
-      <div class="container">
-        <div class="section__intro" data-animate="fade-up">
-          <span class="section__eyebrow">
-            <i data-lucide="workflow"></i>
-            Hoe het werkt
-          </span>
-          <h2 class="section__title">Binnen vier stappen aan de beurt</h2>
-        </div>
-        <div class="timeline">
-          <div class="timeline__item" data-animate="fade-up" data-animate-order="0">
-            <div class="timeline__icon" aria-hidden="true">
-              <span class="timeline__index">1</span>
-              <i data-lucide="qr-code"></i>
-            </div>
-            <h3 class="timeline__title">Open TapTime</h3>
-            <p class="timeline__text">Bezoekers scannen een QR-code of openen de link van het evenement. Geen account nodig.</p>
-          </div>
-          <div class="timeline__item" data-animate="fade-up" data-animate-order="1">
-            <div class="timeline__icon" aria-hidden="true">
-              <span class="timeline__index">2</span>
-              <i data-lucide="list-checks"></i>
-            </div>
-            <h3 class="timeline__title">Bekijk menu en wachttijd</h3>
-            <p class="timeline__text">Elke bar toont producten, voorraad en een drukte-indicator zodat bezoekers slim kiezen.</p>
-          </div>
-          <div class="timeline__item" data-animate="fade-up" data-animate-order="2">
-            <div class="timeline__icon" aria-hidden="true">
-              <span class="timeline__index">3</span>
-              <i data-lucide="credit-card"></i>
-            </div>
-            <h3 class="timeline__title">Betaal online</h3>
-            <p class="timeline__text">Met een paar taps is de bestelling betaald. TapTime genereert automatisch een afhaalcode.</p>
-          </div>
-          <div class="timeline__item" data-animate="fade-up" data-animate-order="3">
-            <div class="timeline__icon" aria-hidden="true">
-              <span class="timeline__index">4</span>
-              <i data-lucide="cup-soda"></i>
-            </div>
-            <h3 class="timeline__title">Haal je bestelling op</h3>
-            <p class="timeline__text">Zodra de bar klaar is, gaat er een notificatie uit en staat het drankje klaar bij de pick-up counter.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--logos" aria-labelledby="partners-heading">
-      <div class="container">
-        <h2 class="visually-hidden" id="partners-heading">Partnerfestivals</h2>
-        <div class="logos" role="list">
-          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="0">
-            <img src="assets/partners/mysteryland.svg" alt="Mysteryland" loading="lazy" />
-          </figure>
-          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="1">
-            <img src="assets/partners/tomorrowland.svg" alt="Tomorrowland" loading="lazy" />
-          </figure>
-          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="2">
-            <img src="assets/partners/zwarte-cross.svg" alt="Zwarte Cross" loading="lazy" />
-          </figure>
-          <figure class="logos__item" role="listitem" data-animate="fade-up" data-animate-order="3">
-            <img src="assets/partners/paaspop.svg" alt="Paaspop" loading="lazy" />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--faq" id="faq">
-      <div class="container">
-        <div class="section__intro" data-animate="fade-up">
-          <span class="section__eyebrow">
-            <i data-lucide="help-circle"></i>
-            FAQ
-          </span>
-          <h2 class="section__title">Veelgestelde vragen</h2>
-        </div>
-        <div class="accordion" data-accordion>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Hoe betalen bezoekers in TapTime?</button>
-            <div class="accordion__panel" hidden>
-              <p>Bezoekers betalen via iDEAL, Apple Pay of creditcard. Betalingen lopen via onze gecertificeerde PSP en verschijnen direct bij de bar.</p>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Wat gebeurt er met persoonsgegevens?</button>
-            <div class="accordion__panel" hidden>
-              <p>We verzamelen alleen gegevens die nodig zijn voor de bestelling en bewaren die volgens AVG-richtlijnen. Zonder toestemming delen we niets met derden.</p>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Hoe werkt terugbetaling bij annulering?</button>
-            <div class="accordion__panel" hidden>
-              <p>Organisatoren kunnen bestellingen in het dashboard annuleren en terugbetalen. Het bedrag staat binnen enkele werkdagen weer op de rekening van de bezoeker.</p>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Werkt TapTime zonder stabiel internet?</button>
-            <div class="accordion__panel" hidden>
-              <p>TapTime bewaart menu’s lokaal zodat bestellen mogelijk blijft bij korte onderbrekingen. Voor realtime updates raden we een betrouwbare wifi- of 4G-verbinding bij de bars aan.</p>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Welke kosten zijn eraan verbonden?</button>
-            <div class="accordion__panel" hidden>
-              <p>We rekenen een vaste platformfee per transactie plus de kosten van de betalingsprovider. Voor grote evenementen bieden we staffelkorting op maat.</p>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Kan TapTime koppelen met bestaande systemen?</button>
-            <div class="accordion__panel" hidden>
-              <p>Ja, via onze API en webhooks koppelen we met POS-systemen, voorraadbeheer en toegangscontrole. Neem contact op voor de technische specificaties.</p>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">Mogen we stockafbeeldingen gebruiken voor onze website?</button>
-            <div class="accordion__panel" hidden>
-              <p>Stockafbeeldingen zijn welkom zolang de licentie commercieel gebruik toestaat. Bewaar altijd het bewijs van je licentie voor controle achteraf.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--demo" id="demo">
-      <div class="container">
-        <div class="section__intro" data-animate="fade-up">
-          <span class="section__eyebrow">
-            <i data-lucide="sparkles" aria-hidden="true"></i>
-            Live demo
-          </span>
-          <h2 class="section__title">Ervaar TapTime op een volledig scherm</h2>
-          <p class="section__subtitle">
-            Open de interactieve demo in een losse pagina en beleef hoe bezoekers bestellen, betalen en hun drankjes ophalen vanaf hun telefoon.
-          </p>
-        </div>
-        <div class="demo-preview" data-animate="fade-up">
-          <div class="demo-preview__content">
-            <h3>Zie de flow zoals je bezoekers die ervaren</h3>
-            <p>
-              Switch tussen festivalbars, vul je mandje en volg live de wachtrij. De demo geeft je een gevoel bij het mobiele bestelproces en het orderboard voor de crew.
-            </p>
-            <ul class="demo-preview__list">
-              <li>Realtime wachttijden en highlights per bar.</li>
-              <li>Een mobiel menu met upsells en snelle herbestellingen.</li>
-              <li>Statusupdates die bezoekers stap voor stap meenemen.</li>
-            </ul>
-            <a href="ios-demo.html" class="btn btn--primary">Bekijk de interactieve demo</a>
-          </div>
-          <div class="demo-preview__visual" aria-hidden="true">
-            <div class="phone-frame">
-              <span class="phone-frame__notch"></span>
-              <div class="phone-frame__inner">
-                <div class="phone-frame__screen phone-frame__screen--preview">
-                  <div class="demo-preview__glow"></div>
-                  <div class="demo-preview__card demo-preview__card--header">
-                    <span class="demo-preview__pill">TapTime Main Stage</span>
-                    <p>Wachttijd ± 2 min</p>
-                  </div>
-                  <div class="demo-preview__card">
-                    <h4>Ronde tafel</h4>
-                    <p>Speciaalbieren, cocktails en snelle bites voor tijdens de set.</p>
-                  </div>
-                  <div class="demo-preview__card demo-preview__card--queue">
-                    <span class="demo-preview__queue-label">Live orderboard</span>
-                    <strong>#241 klaarmaken</strong>
-                    <p>Jij bent bijna aan de beurt 🎉</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta-banner" data-animate="fade-up">
-      <div class="container cta-banner__inner">
-        <p>Klaar om wachtrijen te verkorten en bezoekers blij te maken? Plan vandaag nog een gratis demo van TapTime.</p>
-        <a href="#contact" class="btn btn--primary">Plan een demo</a>
-      </div>
-    </div>
-
-    <section class="section section--cta" id="contact">
-      <div class="container cta" data-animate="fade-up">
-        <div class="cta__content">
-          <h2 class="cta__title">Klaar voor kortere rijen en blije bezoekers?</h2>
-          <p class="cta__text">Plan een demo en ontdek hoe TapTime jouw volgende festival helpt stroomlijnen.</p>
-        </div>
-        <a href="#" class="btn btn--primary">
-          <i data-lucide="calendar-check" aria-hidden="true"></i>
-          Plan een demo
-        </a>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer__top">
-      <div class="container footer__inner">
-        <div class="footer__brand">
-          <a href="#hero" class="footer__logo">TapTime</a>
-          <p class="footer__text">Bestellen en betalen zonder wachtrij voor elk festival en evenement.</p>
-          <div class="footer__social" aria-label="TapTime social media">
-            <a href="#" class="footer__social-link" aria-label="LinkedIn">
-              <i data-lucide="linkedin"></i>
-            </a>
-            <a href="#" class="footer__social-link" aria-label="Instagram">
-              <i data-lucide="instagram"></i>
-            </a>
-            <a href="mailto:info@taptime.nl" class="footer__social-link" aria-label="E-mail">
-              <i data-lucide="mail"></i>
-            </a>
-          </div>
-        </div>
-        <div class="footer__columns">
-          <div class="footer__column">
-            <h3 class="footer__heading">Product</h3>
-            <ul>
-              <li><a href="#product">Overzicht</a></li>
-              <li><a href="#werking">Hoe het werkt</a></li>
-              <li><a href="#faq">Veelgestelde vragen</a></li>
-            </ul>
-          </div>
-          <div class="footer__column">
-            <h3 class="footer__heading">Organisatoren</h3>
-            <ul>
-              <li><a href="#organisatoren">Voordelen</a></li>
-              <li><a href="#contact">Plan een demo</a></li>
-              <li><a href="#">API-documentatie</a></li>
-            </ul>
-          </div>
-          <div class="footer__column">
-            <h3 class="footer__heading">Resources</h3>
-            <ul>
-              <li><a href="#">Download infosheet</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Statuspagina</a></li>
-            </ul>
-          </div>
-          <div class="footer__column footer__column--contact">
-            <h3 class="footer__heading">Contact</h3>
-            <ul>
-              <li><a href="tel:+31000000000">+31 (0)20 000 00 00</a></li>
-              <li><a href="mailto:info@taptime.nl">info@taptime.nl</a></li>
-              <li>Industrieweg 1, 1011 AB Amsterdam</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>© 2025 TapTime. Alle rechten voorbehouden.</p>
-      </div>
+  <footer>
+    <div class="container">
+      <p>© 2025 Shadow Inventory. Discreet toegang tot verborgen woningkansen.</p>
     </div>
   </footer>
-
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@motionone/dom@10/dist/motion-one.umd.min.js" defer></script>
-  <script src="app.js" defer></script>
 </body>
 </html>
